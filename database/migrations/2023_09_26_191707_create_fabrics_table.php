@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('fabrics', function (Blueprint $table) {
             $table->id();
+
+            // name and caption
+            $table->string('name');
+            $table->string('caption');
+            // link image
+            $table->string('image');
+
             $table->timestamps();
         });
     }
