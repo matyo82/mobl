@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fabrics', function (Blueprint $table) {
+        Schema::create('product_metas', function (Blueprint $table) {
             $table->id();
-
-            // name and caption
-            $table->string('name');
-            $table->string('caption');
-            // link image
-            $table->string('image');
-
+            $table->string('meta_key');
+            $table->string('meta_value');
+            $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fabrics');
+        Schema::dropIfExists('product_metas');
     }
 };
