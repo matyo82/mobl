@@ -25,7 +25,7 @@
 
                         <div class="row">
                             <div class="col-lg-6 col-12 mx-auto">
-                                <form method="post" enctype="multipart/form-data" action="{{ route('product.store') }}">
+                                <form method="post" enctype="multipart/form-data" action="{{ route('admin.product.store') }}">
                                     @csrf
                                     <div class="form-group">
                                         <p>نام:</p>

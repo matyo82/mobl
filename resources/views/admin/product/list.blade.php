@@ -58,8 +58,8 @@
 														
 														<td>
 														                                                                                                                       <div class="form-group">
-                                                                <a href="{{ route('product.edit', $product) }}" class="mt-4 btn btn-primary">ویرایش</a>
-                                                                <form class="d-inline" action="{{ route('product.destroy', $product) }}" method="post">
+                                                                <a href="{{ route('admin.product.edit', $product) }}" class="mt-4 btn btn-primary">ویرایش</a>
+                                                                <form class="d-inline" action="{{ route('admin.product.destroy', $product) }}" method="post">
                                                                     @csrf
                                                                     {{ method_field('delete') }}
                                                                     <button class="mt-4 btn btn-danger"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
