@@ -64,8 +64,9 @@
                                                  </span>
                                                 @enderror
                                         </div>
-                                    </div>         
-
+                                    </div>    
+									
+									
 									<div class="form-row mb-4">
                                         <div class="form-group col-md-12">
                                             <label for="inputEmail4">موجودی</label>
@@ -251,4 +252,15 @@
 	 })
 
    </script>
+   
+   <script>
+    var select_fabrics = $('#selected_fabrics');
+    select_fabrics.select2({
+        placeholder: 'لطفا انتخاب کنید',
+        multiple: true,
+        tags : true
+    })
+</script>
+
+
 @endsection

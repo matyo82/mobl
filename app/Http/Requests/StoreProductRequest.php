@@ -34,6 +34,7 @@ class StoreProductRequest extends FormRequest
                 'category_id' => 'required|min:1|max:100000000,|exists:product_categories,id',
 				'meta_key.*'=>'required|max:120|min:1',
 				'meta_value.*'=>'required|max:120|min:1',
+				'selected_fabrics'=>'required|array',
         ];
 	
     }

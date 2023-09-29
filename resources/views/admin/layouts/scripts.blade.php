@@ -14,3 +14,4 @@
     <script src="{{asset('admin-assets/assets/js/custom.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('admin-assets/assets/js/scrollspyNav.js')}}"></script>
+	<script src="{{asset('admin-assets/select2/js/select2.min.js')}}"></script>

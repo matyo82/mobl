@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductMeta;
 use App\Models\ProductCategory;
+use App\Models\Fabric;
 
 
 class ProductController extends Controller
@@ -37,7 +38,7 @@ class ProductController extends Controller
     {
         $inputs = $request->all();
 		//dd($inputs);
-
+				
 		if ($request->hasFile('image')) {
             $fileName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images/products'), $fileName);
@@ -54,8 +55,8 @@ class ProductController extends Controller
             ]);
         }
 		////////////////////////////////////////////////////////////////////
-		
-        return redirect()->route('product.index')->with('create-success','عملیات موفقیت امیز بود');
+
+        return redirect()->route('admin.product.index')->with('create-success','عملیات موفقیت امیز بود');
     }
 
     /**
@@ -102,7 +103,7 @@ class ProductController extends Controller
             ]);
 		 }
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
 	
 		
     }
@@ -113,7 +114,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-		return redirect()->route('product.index')->with('create-success','عملیات موفقیت امیز بود');
+		return redirect()->route('admin.product.index')->with('create-success','عملیات موفقیت امیز بود');
 
     }
 }

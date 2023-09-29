@@ -11,58 +11,36 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>لیست محصولات</h4>
+                                <h4>پارچه کالا</h4>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content widget-content-area">
 
-                              @if (session()->has('product-generated'))
-                                  <div class="alert alert-success col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
-                                      {{ session()->get('product-generated') }}
-                                  </div>
-                              @endif
-
                                 <div class="widget-content widget-content-area">
+																						                                                                                                                                                                          <div class="form-group mb-4">
+                                                  <a href="{{ route('admin.product-fabric.create',$product)}}" class="mt-4 btn btn-primary">ایجاد</a>
+												<div>
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-striped mb-4">
                                             <thead>
                                                 <tr>
                                                     <th>name</th>
-                                                    <th>price</th>
-                                                    <th>image</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-											@foreach($products as $product)
+											@foreach($product->fabrics as $fabric)
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex">
-                                                            <p class="align-self-center mb-0">{{$product->name}}</p>
+                                                            <p class="align-self-center mb-0">{{$fabric->fabric_name}}</p>
                                                         </div>
                                                     </td>
-                                              										
-													<td>
-                                                        <div class="d-flex">
-                                                            <p class="align-self-center mb-0">{{$product->price}}
-															تومان
-															</p>
-                                                        </div>
-														
-                                                    </td>													
-													
-				                                       <td class="d-flex justify-content-center ">
-                                                            <img width="150" height="90" src="{{ asset($product->image) }}">
-                                                        </td>
-														
+                                              		
 														<td>
-														                                                                                                                                                                     <div class="form-group">
-                                                                <a href="{{ route('admin.product.edit', $product) }}" class="mt-4 btn btn-primary">ویرایش</a>
-																
-																<a href="{{ route('admin.product-fabric.index', $product) }}" class="mt-4 btn btn-success">پارچه</a>
-																
-                                                                <form class="d-inline" action="{{ route('admin.product.destroy', $product) }}" method="post">
+														                                                                                                                       <div class="form-group">
+                                                                <form class="d-inline" action="{{ route('admin.product-fabric.destroy', $fabric->id) }}" method="post">
                                                                     @csrf
                                                                     {{ method_field('delete') }}
                                                                     <button class="mt-4 btn btn-danger"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>

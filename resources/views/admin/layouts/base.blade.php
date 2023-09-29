@@ -19,6 +19,7 @@
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('admin-assets/assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{{asset('admin-assets/select2/css/select2.min.css')}}">
     <!--  END CUSTOM STYLE FILE  -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>

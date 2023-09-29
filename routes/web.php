@@ -21,8 +21,6 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
    Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin.home');
    Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
-
-
 });
 
 
