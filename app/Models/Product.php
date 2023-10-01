@@ -8,13 +8,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ProductMeta;
 use App\Models\Fabric;
 use App\Models\ProductFabric;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes,Sluggable;
 	
 	protected $guarded=['id'];
+	
+	public function sluggable(): array
+    {
+        return[
+            'slug' =>[
+                'source' => 'name',
+            ]
+        ];
+    }
 
 	public function metas()
 	{
