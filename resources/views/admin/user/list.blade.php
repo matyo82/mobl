@@ -17,9 +17,13 @@
                     </div>
                     <div class="widget-content widget-content-area">
 
-                        @if (session()->has('user-generated'))
+                        @if (session()->has('success'))
                             <div class="alert alert-success col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
-                                {{ session()->get('user-generated') }}
+                                {{ session()->get('success') }}
+                            </div>
+                        @elseif(session()->has('failed'))
+                            <div class="alert alert-danger col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
+                                {{ session()->get('failed') }}
                             </div>
                         @endif
 

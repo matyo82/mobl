@@ -11,7 +11,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>افزودن محصول</h4>
+                                <h4>افزودن کاربر</h4>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                         <input id="t-text1" type="text" name="name" placeholder="نام را وارد کنید" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                                         @error('name')
                                             <div class="alert alert-danger mt-2" role="alert">
-                                                    {{ $message }}
+                                                {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
@@ -35,7 +35,7 @@
                                         <input class="form-control @error('last_name') is-invalid @enderror" placeholder="نام خانوادگی را وارد کنید" id="exampleFormControlTextarea1" name="last_name" value="{{ old('last_name') }}">
                                         @error('last_name')
                                             <div class="alert alert-danger mt-2" role="alert">
-                                                    {{ $message }}
+                                                {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
@@ -46,7 +46,7 @@
                                             <input type="email" class="form-control" placeholder="ایمیل کاربر را وارد کنید" name="email" value="{{ old('email') }}">
                                             @error('email')
                                                 <div class="alert alert-danger mt-2" role="alert">
-                                                        {{ $message }}
+                                                    {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
@@ -58,7 +58,7 @@
                                             <input type="password" class="form-control" placeholder="رمز را وارد کنید" name="password">
                                             @error('password')
                                                 <div class="alert alert-danger mt-2" role="alert">
-                                                        {{ $message }}
+                                                    {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
@@ -70,7 +70,7 @@
                                             <input type="password" class="form-control" placeholder="رمز را تکرار کنید" name="confirm_password">
                                             @error('confirm_password')
                                                 <div class="alert alert-danger mt-2" role="alert">
-                                                        {{ $message }}
+                                                    {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
@@ -82,7 +82,7 @@
                                             <input type="file" class="custom-file-input" id="customFile" name="image">
                                             @error('image')
                                                 <div class="alert alert-danger mt-2" role="alert">
-                                                        {{ $message }}
+                                                    {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
