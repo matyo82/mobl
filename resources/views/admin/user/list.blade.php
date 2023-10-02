@@ -42,13 +42,13 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>
-                                                    <div class="d-flex">
+                                                    <div class="d-flex justify-content-center">
                                                         <p class="align-self-center mb-0">{{ $user->name }}</p>
                                                     </div>
                                                 </td>
 
                                                 <td>
-                                                    <div class="d-flex">
+                                                    <div class="d-flex justify-content-center">
                                                         <p class="align-self-center mb-0">{{ $user->last_name }}</p>
                                                     </div>
 
@@ -59,12 +59,12 @@
                                                 </td>
 
                                                 <td>
-                                                    <div class="form-group">
+                                                    <div class="form-group d-flex justify-content-center">
                                                         <a href="{{ route('admin.user.edit', $user) }}" class="mt-4 btn btn-primary">ویرایش</a>
                                                         <form class="d-inline" action="{{ route('admin.user.destroy', $user) }}" method="post">
                                                             @csrf
                                                             {{ method_field('delete') }}
-                                                            <button class="mt-4 btn btn-danger"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                                            <button class="mt-4 ml-2 btn btn-danger"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -75,6 +75,10 @@
                                 </table>
                             </div>
 
+                        </div>
+
+                        <div class="mx-5">
+                            {{ $users->links() }}
                         </div>
                     </div>
                     <!--       end main             -->

@@ -76,6 +76,21 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-row mb-4">
+                                        <div class="form-group col-md-12">
+                                            <label for="select-55">نوع کاربر:</label>
+                                            <select class="form-control" id="select-55" name="user_type">
+                                                <option value="0" @if(old('user_type') == 0) selected @endif>کاربر عادی</option>
+                                                <option value="1" @if(old('user_type') == 1) selected @endif>مدیر سایت</option>
+                                            </select>
+                                            @error('user_type')
+                                                <div class="alert alert-danger mt-2" role="alert">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="form-group my-3">
                                         <div class="custom-file mb-4">
                                             <label class="custom-file-label" for="customFile">انتخاب تصویر:</label>

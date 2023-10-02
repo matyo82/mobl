@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::paginate(8);
         return view('admin.user.list', compact('users'));
     }
 
@@ -38,6 +38,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'confirm_password' => 'required|min:8|same:password',
+            'user_type' => 'required|boolean',
             'image' => 'nullable|image|max:5120'
         ]);
         $validated['password'] = bcrypt($validated['password']);
@@ -71,7 +72,7 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-        
+
         $validated = $request->validate([
             'name' => 'required|max:255',
             'last_name' => 'required|max:255',
@@ -80,8 +81,9 @@ class UserController extends Controller
                 'email',
                 Rule::unique('users')->ignore($user->email, 'email')
             ],
-            'password' => 'required|min:8',
-            'confirm_password' => 'required|min:8|same:password',
+            'password' => 'nullable|min:8',
+            'confirm_password' => 'nullable|min:8|same:password',
+            'user_type' => 'required|boolean',
             'image' => 'nullable|image|max:5120'
         ]);
         $validated['password'] = bcrypt($validated['password']);
