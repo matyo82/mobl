@@ -17,7 +17,14 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        ];
+                              'name' => 'product-test-'.rand(1 , 900000),
+                              'introduction' => fake()->paragraph(),
+                              'price' => rand(100000 , 900000),
+                              'guarantee' => 1,
+                              'marketable' => rand(0 , 1),
+                              'category_id' => rand(1 , 5),
+                              'image' => 'public/images/fakes/cart.avif',
+                              'status' => 1,     
+			    ];
     }
 }

@@ -4,19 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use App\Models\OrderItem;
 
 
-class ProductSeeder extends Seeder
+
+class OrderItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-              DB::statement('truncate products');
-                Product::factory(5)->create();
+                DB::statement('truncate order_items');
+                OrderItem::factory(10)->create();
     }
-	
 }

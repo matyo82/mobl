@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ProductMeta;
 use App\Models\Fabric;
 use App\Models\ProductFabric;
+use App\Models\ProductCategory;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 
@@ -36,6 +37,11 @@ class Product extends Model
 	public function fabrics()
 	{
 		return $this->hasMany(ProductFabric::class);
+	}
+	
+	public function category()
+	{
+	    return $this->belongsTo(ProductCategory::class);
 	}
 	
 }
