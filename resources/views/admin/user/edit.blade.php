@@ -20,10 +20,10 @@
                             <div class="col-lg-6 col-12 mx-auto">
                                 <form method="post" enctype="multipart/form-data" action="{{ route('admin.user.update', $user) }}">
                                     @csrf
-									@method('put')
+                                    @method('put')
                                     <div class="form-group">
                                         <label for="t-text1">نام:</label>
-                                        <input id="t-text1" type="text" name="name" placeholder="نام را وارد کنید" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?: $user->name  }}">
+                                        <input id="t-text1" type="text" name="name" placeholder="نام را وارد کنید" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?: $user->name }}">
                                         @error('name')
                                             <div class="alert alert-danger mt-2" role="alert">
                                                 {{ $message }}
@@ -33,7 +33,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">نام خانوادگی:</label>
-                                        <input class="form-control @error('last_name') is-invalid @enderror" placeholder="نام خانوادگی را وارد کنید" id="exampleFormControlTextarea1" name="last_name" value="{{ old('last_name') ?: $user->last_name   }}">
+                                        <input class="form-control @error('last_name') is-invalid @enderror" placeholder="نام خانوادگی را وارد کنید" id="exampleFormControlTextarea1" name="last_name" value="{{ old('last_name') ?: $user->last_name }}">
                                         @error('last_name')
                                             <div class="alert alert-danger mt-2" role="alert">
                                                 {{ $message }}
@@ -81,8 +81,8 @@
                                         <div class="form-group col-md-12">
                                             <label for="select-55">نوع کاربر:</label>
                                             <select class="form-control" id="select-55" name="user_type">
-                                                <option value="0" @if($user->user_type == 0) selected @endif>کاربر عادی</option>
-                                                <option value="1" @if($user->user_type == 1) selected @endif>مدیر سایت</option>
+                                                <option value="0" @if ($user->user_type == 0) selected @endif>کاربر عادی</option>
+                                                <option value="1" @if ($user->user_type == 1) selected @endif>مدیر سایت</option>
                                             </select>
                                             @error('user_type')
                                                 <div class="alert alert-danger mt-2" role="alert">
@@ -104,7 +104,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center mt-4">
-                                            <img src="{{ asset($user->image) }}" alt="" height="200">
+                                            <img src="{{ $user->image ? asset($user->image) : asset('images/users/default.jpg') }}" alt="" height="200">
                                         </div>
                                     </div>
 

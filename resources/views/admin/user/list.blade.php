@@ -32,15 +32,21 @@
                                 <table class="table table-bordered table-striped mb-4">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">تصویر</th>
                                             <th class="text-center">نام</th>
                                             <th class="text-center">نام خانوادگی</th>
-                                            <th class="text-center">تصویر</th>
+                                            <th class="text-center">وضعیت حساب</th>
+                                            <th class="text-center">ایمیل</th>
                                             <th class="text-center">عملیات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
+                                                <td class="d-flex justify-content-center">
+                                                    <img width="150" height="90" src="{{ $user->image ? asset($user->image) : asset('images/users/default.jpg') }}">
+                                                </td>
+
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <p class="align-self-center mb-0">{{ $user->name }}</p>
@@ -51,11 +57,22 @@
                                                     <div class="d-flex justify-content-center">
                                                         <p class="align-self-center mb-0">{{ $user->last_name }}</p>
                                                     </div>
-
                                                 </td>
 
-                                                <td class="d-flex justify-content-center ">
-                                                    <img width="150" height="90" src="{{ asset($user->image) }}">
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        @if ($user->email_verified_at)
+                                                            <span class="rounded px-2 py-1" style="background-color: darkgreen ; font-size: 0.6rem; box-shadow: 0 0 35px 0.4px green;">فعال</span>
+                                                        @else
+                                                            <span class="rounded px-2 py-1" style="background-color: firebrick ; font-size: 0.6rem; box-shadow: 0 0 35px 0.4px red;">غیرفعال</span>
+                                                        @endif
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <p class="align-self-center mb-0">{{ $user->email }}</p>
+                                                    </div>
                                                 </td>
 
                                                 <td>

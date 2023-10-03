@@ -20,15 +20,20 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $fake_images = ['images/users/test.jpg' , 'images/users/test2.jpg' , 'images/users/test3.jpg'];
+        $email =[now() , null];
+
         return [
             'name' => $this->faker->name(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'email_verified_at' => $email[rand(0,1)],
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            'user_type' => 0 | 1,
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
-            'profile_photo_path' => null,
+            'image' => $fake_images[rand(0,2)],
             'current_team_id' => null,
         ];
     }
