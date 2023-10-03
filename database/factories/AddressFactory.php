@@ -18,12 +18,11 @@ class AddressFactory extends Factory
     {
         return [
                               'postal_code' =>12345678 ,
+                              'city' => 'تهران',
+                              'province' => 'تهران',
                               'address' => 'خیابان x-کوچه y',
                               'no' => 11,
                               'unit' => 1,
-                              'recipient_first_name' => fake()->name(),
-                              'recipient_last_name' => fake()->name(),
-                              'mobile' => '09309999999',
                               'status' => 1,
         ];
     }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Front;
 
 use App\Models\Address;
-use App\Http\Requests\StoreAddressRequest;
-use App\Http\Requests\UpdateAddressRequest;
+use App\Http\Requests\AddressRequest;
+use App\Http\Controllers\Controller;
+
 
 class AddressController extends Controller
 {
@@ -63,4 +64,22 @@ class AddressController extends Controller
     {
         //
     }
+	
+	
+	public function addAddress(AddressRequest $request)
+	{
+		$inputs=$request->all();
+		$inputs['user_id']=auth()->user()->id;
+		$address=Address::create($inputs);
+		return back();
+	}
+	
+	
+	public function updateAddress(Address $address,AddressRequest $request)
+	{
+		$inputs=$request->all();
+		$inputs['user_id']=auth()->user()->id;
+		$address->update($inputs);
+		return back();
+	}
 }
