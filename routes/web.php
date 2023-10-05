@@ -19,15 +19,22 @@ Route::get('/', function () {
     return view('front.index');
 });
 
+Route::get('a' , function(){
+    return auth()->loginUsingId(1); // quick login for test
+});
+Route::get('b' , function(){
+    return auth()->logout(); // quick logout for test
+});
+
 
 
 //profile
-Route::controller(ProfileController::class)->prefix('profile')->group(function () {
-    Route::get('/', 'index')->name('front.profile');
-    Route::put('/update', 'update')->name('front.profile.update');
+Route::controller(ProfileController::class)->prefix('profile')->name('front.')->middleware('auth')->group(function () {
+    Route::get('/', 'index')->name('profile');
+    Route::put('/update', 'update')->name('profile.update');
 	//address
-        Route::post('/add-address', [AddressController::class, 'addAddress'])->name('front.profile.add-address');
-        Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('front.profile.edit-address');
+        Route::post('/add-address', [AddressController::class, 'addAddress'])->name('profile.add-address');
+        Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('profile.edit-address');
 });
 
 
