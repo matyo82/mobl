@@ -16,13 +16,7 @@ use App\Http\Controllers\Front\AddressController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-//admin
-Route::prefix('admin')->group(function () {
-   Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin.home');
-   Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
+    return view('front.index');
 });
 
 
@@ -34,7 +28,6 @@ Route::controller(ProfileController::class)->prefix('profile')->group(function (
 	//address
         Route::post('/add-address', [AddressController::class, 'addAddress'])->name('front.profile.add-address');
         Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('front.profile.edit-address');
-
 });
 
 
