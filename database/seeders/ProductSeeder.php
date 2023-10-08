@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
               DB::statement('truncate products');
-                Product::factory(5)->create();
+                Product::factory(1)->create();
     }
 	
 }

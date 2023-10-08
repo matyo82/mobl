@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\AddressController;
 use App\Http\Controllers\front\ProductController;
+use App\Http\Controllers\Front\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,7 @@ Route::get('b' , function(){
 });
 
 //index
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/',[HomeController::class,'home']);
 
 
 //about

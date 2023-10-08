@@ -128,53 +128,19 @@
 
     <section class="scroller">
         <div class="container">
-            <h2>پرفروش ترین ها</h2>
+            <h2>جدیدترین ها</h2>
             <ul>
+			@foreach($products as $product)
                 <li>
                     <a href="#">
                         <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                            <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
                         </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
+                        <h3>{{$product->name}}</h3>
+                <div class="price"><span> {{$product->price}} تومان </span></div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
+			@endforeach
             </ul>
         </div>
     </section>
@@ -183,51 +149,17 @@
         <div class="container">
             <h2>پرفروش ترین ها</h2>
             <ul>
+			@foreach($products as $product)
                 <li>
                     <a href="#">
                         <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                            <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
                         </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
+                        <h3>{{$product->name}}</h3>
+                <div class="price"><span> {{$product->price}} تومان </span></div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
-                        </div>
-                        <h3>محصول مشابه شماره 1</h3>
-                        <div class="price"><span>تومان</span> 15000000</div>
-                    </a>
-                </li>
+			@endforeach
             </ul>
         </div>
     </section>

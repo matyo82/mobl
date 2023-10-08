@@ -10,7 +10,7 @@
         <div class="top-menu">
           <ul>
 		  		  
-            <li><a href="#">درباره ما</a></li>
+            <li><a href="{{route('about')}}">درباره ما</a></li>
             <li><a href="#">تماس با ما</a></li>
 		  @auth
             <li><a href="{{route('front.profile')}}">حساب کاربری</a></li>

@@ -10,6 +10,7 @@ use Database\Seeders\OrderItemSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\AddressSeeder;
 use Database\Seeders\ProductCategoriesSeeder;
+use Database\Seeders\ProductMetaSeeder;
 use Illuminate\Support\Facades\Schema;
 
 
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
 		             $this->call(OrderItemSeeder::class);
 		             $this->call(AddressSeeder::class);
 		             $this->call(ProductSeeder::class);
+		             $this->call(ProductMetaSeeder::class);
                      Schema::enableForeignKeyConstraints();
           }
 }

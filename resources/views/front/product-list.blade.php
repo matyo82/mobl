@@ -14,8 +14,7 @@
                 @foreach ($products as $product)
                     <div class="card">
                         <div class="img-container">
-                            {{-- <img src="../assets/img/products/Tangram-Cabinet-3.jpg" alt="" /> --}}
-                            <img src="{{ asset($product->image) }}" alt="" />
+                            <img src="{{ asset($product->image) }}" alt="" style="width: 115px;height: 110px;">
                         </div>
                         <h3><a href="{{ route('front.product' , ['product' => $product->id]) }}">{{ $product->name }}</a></h3>
                         <div class="card-footer">
