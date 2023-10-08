@@ -9,10 +9,26 @@
         <!-- Top Menu -->
         <div class="top-menu">
           <ul>
-            <li><a href="#">حساب کاربری</a></li>
-            <li><a href="#">علاقه‌مندی ها</a></li>
+		  		  
             <li><a href="#">درباره ما</a></li>
             <li><a href="#">تماس با ما</a></li>
+		  @auth
+            <li><a href="{{route('front.profile')}}">حساب کاربری</a></li>
+            <li><a href="#">علاقه‌مندی ها</a></li>
+			<li>
+			<form method="POST" action="{{ route('logout') }}">
+					@csrf
+			    <button type="submit" class="btn btn-sm" style="margin-top:-5px">خروج</button>		
+            </form>
+			</li>
+		  @endauth
+		  
+		  @guest
+		  
+            <li><a href="{{route('login')}}">ورود</a></li>
+            <li><a href="{{route('register')}}">ثبت نام</a></li>
+		  @endguest
+
           </ul>
         </div>
       </div>
@@ -40,48 +56,9 @@
                   <div class="cell">
                     <h4>مبل</h4>
                     <ul>
-                      <li><a href="#">مبل راحتی</a></li>
-                      <li><a href="#">مبل سلطنتی</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل قطعه‌ای</a></li>
-                    </ul>
-                  </div>
-                  <div class="cell">
-                    <h4>کابینت</h4>
-                    <ul>
-                      <li><a href="#">مبل راحتی</a></li>
-                      <li><a href="#">مبل سلطنتی</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل قطعه‌ای</a></li>
-                    </ul>
-                  </div>
-                  <div class="cell">
-                    <h4>میز</h4>
-                    <ul>
-                      <li><a href="#">مبل راحتی</a></li>
-                      <li><a href="#">مبل سلطنتی</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                    </ul>
-                  </div>
-                  <div class="cell">
-                    <h4>مبل</h4>
-                    <ul>
-                      <li><a href="#">مبل راحتی</a></li>
-                      <li><a href="#">مبل سلطنتی</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل قطعه‌ای</a></li>
-                    </ul>
-                  </div>
-                  <div class="cell">
-                    <h4>کابینت</h4>
-                    <ul>
-                      <li><a href="#">مبل راحتی</a></li>
-                      <li><a href="#">مبل سلطنتی</a></li>
-                      <li><a href="#">مبل ارزان</a></li>
-                      <li><a href="#">مبل قطعه‌ای</a></li>
+					@foreach($categories as $category)
+                      <li><a href="#">{{$category->name}}</a></li>
+					@endforeach
                     </ul>
                   </div>
                 </div>
