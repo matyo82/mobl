@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\AddressController;
+use App\Http\Controllers\front\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,6 @@ use App\Http\Controllers\Front\AddressController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
-
 Route::get('a' , function(){
     return auth()->loginUsingId(1); // quick login for test
 });
@@ -26,6 +23,23 @@ Route::get('b' , function(){
     return auth()->logout(); // quick logout for test
 });
 
+//index
+Route::get('/', function () {
+    return view('front.index');
+});
+
+
+//about
+Route::get('/about' ,  function(){
+    return view('front.about');
+})->name('about');
+
+
+//product
+Route::controller(ProductController::class)->name('front.')->group(function(){
+    Route::get('product-list' , 'list')->name('product-list');
+    Route::get('product/{product}' , 'single')->name('product');
+});
 
 
 //profile

@@ -1,4 +1,7 @@
-@import './style.css'
+/* styles */
+@import './style.css';
+@import './single.css';
+
 
 /* @tailwind base;
 @tailwind components;

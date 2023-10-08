@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -11,8 +12,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-		
-        return view('front.profile');
+        $user = User::find(auth()->user()->id);
+        return view('front.profile' , compact('user'));
     }
 
 

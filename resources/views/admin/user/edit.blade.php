@@ -23,7 +23,7 @@
                                     @method('put')
                                     <div class="form-group">
                                         <label for="t-text1">نام:</label>
-                                        <input id="t-text1" type="text" name="name" placeholder="نام را وارد کنید" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?: $user->name }}">
+                                        <input id="t-text1" type="text" name="name" placeholder="نام را وارد کنید" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? $user->name }}">
                                         @error('name')
                                             <div class="alert alert-danger mt-2" role="alert">
                                                 {{ $message }}
@@ -33,7 +33,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">نام خانوادگی:</label>
-                                        <input class="form-control @error('last_name') is-invalid @enderror" placeholder="نام خانوادگی را وارد کنید" id="exampleFormControlTextarea1" name="last_name" value="{{ old('last_name') ?: $user->last_name }}">
+                                        <input class="form-control @error('last_name') is-invalid @enderror" placeholder="نام خانوادگی را وارد کنید" id="exampleFormControlTextarea1" name="last_name" value="{{ old('last_name') ?? $user->last_name }}">
                                         @error('last_name')
                                             <div class="alert alert-danger mt-2" role="alert">
                                                 {{ $message }}
@@ -44,7 +44,7 @@
                                     <div class="form-row mb-4">
                                         <div class="form-group col-md-12">
                                             <label for="inputEmail4">ایمیل:</label>
-                                            <input type="email" class="form-control" placeholder="ایمیل کاربر را وارد کنید" name="email" value="{{ old('email') ?: $user->email }}">
+                                            <input type="email" class="form-control" placeholder="ایمیل کاربر را وارد کنید" name="email" value="{{ old('email') ?? $user->email }}">
                                             @error('email')
                                                 <div class="alert alert-danger mt-2" role="alert">
                                                     {{ $message }}

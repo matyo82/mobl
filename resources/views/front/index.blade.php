@@ -1,10 +1,12 @@
 @extends('front.layouts.base')
 
+@section('title', 'صفحه اصلی')
+
 @section('content')
     <!-- Offers section -->
     <section class="offers">
         <div class="offer-img">
-            <img src="{{ asset('assets/img/products/special-offer.jpg') }}" alt="" />
+            <img src="assets/img/products/special-offer.jpg" alt="" />
         </div>
         <div class="overlay"></div>
         <div class="text-content">
@@ -14,6 +16,7 @@
         </div>
     </section>
 
+    <!-- Services section -->
     <section class="services">
         <div class="container">
             <div class="card">
@@ -65,7 +68,7 @@
                         </p>
                         <a href="#" class="btn btn-accent">مشاهده</a>
                     </div>
-                    <img src="{{ asset('assets/img/products/Furniture-1.jpg') }}" alt="" loading="lazy" />
+                    <img src="./assets/img/products/Furniture-1.jpg" alt="" loading="lazy" />
                 </div>
                 <div class="handpicked-item img-container">
                     <div class="handpicked-overlay"></div>
@@ -123,35 +126,109 @@
         </div>
     </section>
 
-    <!-- Our Brands Section -->
-    <section class="our-brands">
-        <h2>برند های ما</h2>
+    <section class="scroller">
         <div class="container">
-            <div class="scroller">
-                <ul class="scroller-inner">
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-1.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-2.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-3.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-4.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-5.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-6.png') }}" alt="" />
-                    </li>
-                    <li class="img-container">
-                        <img src="{{ asset('assets/img/logo/logo-7.png') }}" alt="" />
-                    </li>
-                </ul>
-            </div>
+            <h2>پرفروش ترین ها</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="scroller">
+        <div class="container">
+            <h2>پرفروش ترین ها</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="img-container">
+                            <img src="../assets/img/products/Furniture-1.jpg" alt="" />
+                        </div>
+                        <h3>محصول مشابه شماره 1</h3>
+                        <div class="price"><span>تومان</span> 15000000</div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
 @endsection

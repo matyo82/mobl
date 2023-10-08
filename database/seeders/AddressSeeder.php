@@ -15,7 +15,7 @@ class AddressSeeder extends Seeder
     public function run(): void
     {
               DB::statement('truncate addresses');
-			  Address::factory(1)->create(['user_id'=>1]);
+			  Address::factory(5)->create(['user_id'=>1]);
     }
     
 }

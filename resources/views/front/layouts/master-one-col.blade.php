@@ -10,7 +10,11 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('front-assets/assets/favicon.ico') }}" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('front-assets/bootstrap/bootstrap.rtl.css') }}" rel="stylesheet" />
-    @yield('head-tag')
+    @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
+    <title>
+        فروشگاه مبل
+        | @yield('title')
+    </title>
 </head>
 
 <body style="direction:rtl">
@@ -21,6 +25,7 @@
     <script src="{{ asset('admin-ssets/js/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin-assets/js/grid.js') }}"></script>
     <script src="{{ asset('admin-assets/js/jquery-3.5.1.min.js') }}"></script>
+
     @yield('script')
 
 </body>
