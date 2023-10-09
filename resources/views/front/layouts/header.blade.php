@@ -9,13 +9,12 @@
             <!-- Top Menu -->
             <div class="top-menu">
                 <ul>
-
-                    <li><a href="{{ route('about') }}">درباره ما</a></li>
-                    <li><a href="#">تماس با ما</a></li>
                     @auth
-                        <li><a href="{{ route('front.profile') }}">حساب کاربری</a></li>
-                        <li><a href="#">علاقه‌مندی ها</a></li>
-                        <li>
+                        <li class="ml-2"><a href="{{ route('front.profile') }}">حساب کاربری</a></li>
+                        |
+                        <li class="mx-2"><a href="#">علاقه‌مندی ها</a></li>
+                        |
+                        <li class="mr-2">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-sm" style="margin-top:-5px">خروج</button>
@@ -24,9 +23,9 @@
                     @endauth
 
                     @guest
-
-                        <li><a href="{{ route('login') }}">ورود</a></li>
-                        <li><a href="{{ route('register') }}">ثبت نام</a></li>
+                        <li class="mr-2"><a href="{{ route('login') }}">ورود</a></li>
+                        |
+                        <li class="ml-2"><a href="{{ route('register') }}">ثبت نام</a></li>
                     @endguest
 
                 </ul>
@@ -41,10 +40,13 @@
                 <button class="btn mobile-menu-btn menu-close-btn" type="button" id="close-btn"><i class="fa fa-times"></i></button>
                 <ul>
                     <li>
-                        <a href="#"><i class="fa fa-home"></i> صفحه اصلی</a>
+                        <a href="{{ route('index') }}" @if(in_route('index')) style="pointer-events: none; text-decoration: none; color:blue" @endif><i class="fa fa-home"></i> صفحه اصلی</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-camera"></i> گالری</a>
+                        <a href="{{ route('front.product-list') }}" @if(in_route('front.product-list')) style="pointer-events: none; text-decoration: none; color:blue" @endif><i class="fa fa-camera"></i> محصولات</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('about') }}"  @if(in_route('about')) style="pointer-events: none; text-decoration: none; color:blue" @endif><i class="fa fa-pencil"></i>درباره ما</a>
                     </li>
                     <!-- Megamenu dropdown -->
                     @if (in_route('front.product-list'))
@@ -69,9 +71,6 @@
                             </div>
                         </div>
                     @endif
-                    <li>
-                        <a href="#"><i class="fa fa-pencil"></i> بلاگ</a>
-                    </li>
                 </ul>
             </nav>
             <button type="button" class="btn mobile-menu-btn" id="open-btn">
@@ -79,7 +78,7 @@
             </button>
             <!-- Website Logo -->
             <div class="brand img-container">
-                <a href="#">
+                <a href="{{ route('index') }}"  @if(in_route('index')) style="pointer-events: none" @endif>
                     <img src="./assets/img/logo.png" alt="" />
                 </a>
             </div>

@@ -25,7 +25,7 @@ Route::get('b' , function(){
 });
 
 //index
-Route::get('/',[HomeController::class,'home']);
+Route::get('/',[HomeController::class,'home'])->name('index');
 
 
 //about

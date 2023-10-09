@@ -12,7 +12,7 @@
         <div class="text-content">
             <h2>فروش ویژه آخر فصل</h2>
             <p>تا 50% تخفیف!</p>
-            <a href="#" class="btn btn-accent">همین الان خرید کنید</a>
+            <a href="{{ route('front.product-list') }}" class="btn btn-accent">همین الان خرید کنید</a>
         </div>
     </section>
 
@@ -130,9 +130,9 @@
         <div class="container">
             <h2>جدیدترین ها</h2>
             <ul>
-			@foreach($products as $product)
+			@foreach(App\Models\Product::latest()->limit(5)->get() as $product)
                 <li>
-                    <a href="#">
+                    <a href="{{ route('front.product' , ['product' => $product->id]) }}">
                         <div class="img-container">
                             <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
                         </div>
@@ -149,9 +149,9 @@
         <div class="container">
             <h2>پرفروش ترین ها</h2>
             <ul>
-			@foreach($products as $product)
+			@foreach(App\Models\Product::limit(5)->get() as $product)
                 <li>
-                    <a href="#">
+                    <a href="{{ route('front.product' , ['product' => $product->id]) }}">
                         <div class="img-container">
                             <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
                         </div>
