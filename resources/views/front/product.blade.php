@@ -38,7 +38,7 @@
 
             <!-- Sidebar for more info and access -->
             <aside class="sidebar">
-                <div class="store-info">موجود در انبار :{{$product->marketable_number}}</div>
+                <div class="store-info">موجودی انبار :{{$product->marketable_number}}</div>
                 <div class="price"><span> {{$product->price}} تومان </span></div>
                 <div class="add-to-cart-btn">
                     <button type="button" class="btn btn-accent">

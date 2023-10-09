@@ -36,7 +36,7 @@ Route::get('/about' ,  function(){
 
 //product
 Route::controller(ProductController::class)->name('front.')->group(function(){
-    Route::get('product-list' , 'list')->name('product-list');
+    Route::get('product-list/{category?}' , 'list')->name('product-list');
     Route::get('product/{product}' , 'single')->name('product');
 });
 

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="product-list-header">
                 دسته‌بندی:
-                <a href="#">مبل</a> / <a href="#">اقتصادی</a>
+                <span>مبل</span> / <span>{{ $category->name ?? 'همه' }}</span>
             </div>
             <div class="product-grid">
 
@@ -29,6 +29,11 @@
                 @endforeach
 
             </div>
+        </div>
+
+        {{-- pagination --}}
+        <div class="d-flex justify-content-center my-5">
+            {{ $products->links() }}
         </div>
     </main>
 @endsection
