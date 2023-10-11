@@ -17,12 +17,12 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-                              'user_id' => 1,
-                              'address_id' => 1,
-                              'order_final_amount' => rand(10000 , 50000),
-                              'order_discount_amount' => rand(1000 , 5000),
-                              'order_discount_percentage' => 50,
-                              'order_status' => 0,
+            'user_id' => 1,
+            'address_id' => 1,
+            'order_final_amount' => rand(10000, 50000),
+            'order_discount_amount' => rand(1000, 5000),
+            'order_discount_percentage' => 50,
+            'order_status' => 0,
         ];
     }
 }

@@ -17,12 +17,11 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-                              'order_id' => 1,
-                              'product_id' => rand(1 , 5),
-							  
-                              'number' => rand(1,5),
-                              'final_product_price' => rand(1000 , 5000),
-                              'final_total_price' => rand(20000 , 50000),
+            'order_id' => 1,
+            'product_id' => rand(1, 30),
+            'number' => rand(1, 5),
+            'final_product_price' => rand(1000, 5000),
+            'final_total_price' => rand(20000, 50000),
         ];
     }
 }

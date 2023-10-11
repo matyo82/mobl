@@ -17,9 +17,9 @@ class ProductMetaFactory extends Factory
     public function definition(): array
     {
         return [
-            'meta_key'=>'اندازه',
-            'meta_value'=>'120*110',
-            'product_id'=>1,
+            'meta_key' => 'اندازه',
+            'meta_value' => '120*110',
+            'product_id' => 1,
         ];
     }
 }

@@ -17,9 +17,9 @@ class ProductCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-                              'name' => fake()->name(),
-                              'description' => fake()->text(),
-                              'status' => 1,
+            'name' => fake()->name(),
+            'description' => fake()->text(),
+            'status' => 1,
         ];
     }
 }

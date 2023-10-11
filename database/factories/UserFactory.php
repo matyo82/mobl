@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Team;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -20,20 +19,20 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $fake_images = ['images/users/test.jpg' , 'images/users/test2.jpg' , 'images/users/test3.jpg'];
-        $email =[now() , null];
+        $fake_images = ['images/users/test.jpg', 'images/users/test2.jpg', 'images/users/test3.jpg'];
+        $email = [now(), null];
 
         return [
             'name' => $this->faker->name(),
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => $email[rand(0,1)],
+            'email_verified_at' => $email[rand(0, 1)],
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
             'user_type' => 0 | 1,
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
-            'image' => $fake_images[rand(0,2)],
+            'image' => $fake_images[rand(0, 2)],
             'current_team_id' => null,
         ];
     }
@@ -55,17 +54,17 @@ class UserFactory extends Factory
      */
     public function withPersonalTeam(callable $callback = null): static
     {
-        if (! Features::hasTeamFeatures()) {
+        if (!Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
         return $this->has(
             Team::factory()
-                ->state(fn (array $attributes, User $user) => [
-                    'name' => $user->name.'\'s Team',
-                    'user_id' => $user->id,
-                    'personal_team' => true,
-                ])
+                ->state(fn(array $attributes, User $user) => [
+        'name' => $user->name . '\'s Team',
+        'user_id' => $user->id,
+        'personal_team' => true,
+    ])
                 ->when(is_callable($callback), $callback),
             'ownedTeams'
         );

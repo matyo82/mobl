@@ -32,16 +32,17 @@ class Product extends Model
 	{
 		return $this->hasMany(ProductMeta::class);
 	}
-	
-		
+
 	public function fabrics()
 	{
 		return $this->hasMany(ProductFabric::class);
 	}
 	
-	public function category()
-	{
-	    return $this->belongsTo(ProductCategory::class);
-	}
+	public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class,'category_id');
+    }
+
+
 	
 }

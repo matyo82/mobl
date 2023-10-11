@@ -24,6 +24,7 @@ Route::get('b' , function(){
     return auth()->logout(); // quick logout for test
 });
 
+
 //index
 Route::get('/',[HomeController::class,'home'])->name('index');
 

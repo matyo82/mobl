@@ -17,13 +17,13 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-                              'postal_code' =>12345678 ,
-                              'city' => 'تهران',
-                              'province' => 'تهران',
-                              'address' => 'خیابان x-کوچه y',
-                              'no' => 11,
-                              'unit' => 1,
-                              'status' => 1,
+            'postal_code' => 12345678,
+            'city' => 'تهران',
+            'province' => 'تهران',
+            'address' => 'خیابان x-کوچه y',
+            'no' => 11,
+            'unit' => 1,
+            'status' => 1,
         ];
     }
 }
