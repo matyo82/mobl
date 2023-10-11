@@ -17,7 +17,7 @@
                     <div class="poduct-title">
                         <div class="product-header">
                             <div class="product-cat">
-                                <a href="#">مبل</a> / <a href="#">{{$product->category->name}}</a>
+                                <a href="#">مبل</a> / <a href="#">{{$product->productCategory->name}}</a>
                             </div>
                             <div class="access-btns">
                                 <button type="button" class="btn btn-dark" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart"></i></button>
