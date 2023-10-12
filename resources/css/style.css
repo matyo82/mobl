@@ -216,6 +216,9 @@
   }
   
   .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background: transparent;
     padding: 0;
@@ -224,6 +227,7 @@
     font-size: inherit;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    border-radius: 0.4em;
   }
   
   .btn-accent {
@@ -245,6 +249,18 @@
   
   .btn-dark:hover {
     background-color: hsl(240, 50%, 55%);
+  }
+  
+  .btn-green {
+    background-color: green;
+    color: var(--clr-neutral-800);
+    padding: 0.5em 1em;
+  }
+  
+  .btn-red {
+    background-color: red;
+    color: var(--clr-neutral-800);
+    padding: 0.5em 1em;
   }
   
   .text-content h2 {
