@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ProductMeta;
-use App\Models\Fabric;
 use App\Models\ProductFabric;
 use App\Models\ProductCategory;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -43,6 +42,12 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class,'category_id');
     }
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
-	
+
+
+
 }

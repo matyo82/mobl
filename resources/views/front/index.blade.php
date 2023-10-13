@@ -134,7 +134,7 @@
                 <li>
                     <a href="{{ route('front.product' , ['product' => $product->id]) }}">
                         <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
+                            <img src="{{asset($product->image)}}" alt=""  style="width: 150px;height: 180;">
                         </div>
                         <h3>{{$product->name}}</h3>
                 <div class="price"><span> {{$product->price}} تومان </span></div>
@@ -153,7 +153,7 @@
                 <li>
                     <a href="{{ route('front.product' , ['product' => $product->id]) }}">
                         <div class="img-container">
-                            <img src="../assets/img/products/Furniture-1.jpg" alt=""  style="width: 150px;height: 180;">
+                            <img src="{{asset($product->image)}}" alt=""  style="width: 150px;height: 180;">
                         </div>
                         <h3>{{$product->name}}</h3>
                 <div class="price"><span> {{$product->price}} تومان </span></div>

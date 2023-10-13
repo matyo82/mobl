@@ -39,6 +39,7 @@ Route::get('/about' ,  function(){
 Route::controller(ProductController::class)->name('front.')->group(function(){
     Route::get('product-list/{category?}' , 'list')->name('product-list');
     Route::get('product/{product}' , 'single')->name('product');
+    Route::get('product/{product}/add-to-favorite' , 'addToFavorite')->name('product.addToFavorite');
 });
 
 
@@ -49,6 +50,11 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
 	//address
         Route::post('/add-address', [AddressController::class, 'addAddress'])->name('profile.add-address');
         Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('profile.edit-address');
+});
+
+//cart
+Route::controller(ProfileController::class)->prefix('product')->name('front.')->middleware('auth')->group(function () {
+    Route::post('/add-to-cart/{product}', [\App\Http\Controllers\Front\CartController::class, 'addToCart'])->name('product.add-to-cart');
 });
 
 

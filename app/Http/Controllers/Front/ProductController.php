@@ -5,7 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -18,11 +18,26 @@ class ProductController extends Controller
 
         $products = $products->latest()->paginate(9);
 
-        return view('front.product-list', compact('products' , 'category'));
+        return view('front.product-list', compact('products', 'category'));
     }
 
     public function single(Product $product)
     {
+//        dd(auth()->user()->products);
         return view('front.product', ['product' => $product]);
+    }
+
+    public function addToFavorite(Product $product)
+    {
+        if (Auth::check()) {
+            $product->user()->toggle([Auth::user()->id]);
+            if ($product->user->contains(Auth::user()->id)) {
+                return back()->with('success', 'محصول با موفقیت به لیست علاقه مندی ها اضافه شد');
+            } else {
+                return back()->with('failed', 'محصول با موفقیت از لیست علاقه مندی ها حذف شد');
+            }
+        } else {
+            return redirect()->route('login');
+        }
     }
 }
