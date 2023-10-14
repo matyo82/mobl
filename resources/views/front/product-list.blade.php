@@ -21,9 +21,12 @@
                             <div class="price">
                                 {{ $product->price }} تومان
                             </div>
-                            <button type="button" class="btn btn-accent">
-                                افزودن به سبد
-                            </button>
+                            <form action="{{route('front.product.add-to-cart',$product->id)}}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-accent">
+                                    افزودن به سبد
+                                </button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

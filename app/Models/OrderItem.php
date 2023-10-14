@@ -10,10 +10,8 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-	public function singleProduct()
+	public function product()
 	{
-	    return $this->belongsTo(Product::class,'product_id');
+	    return $this->belongsTo(Product::class, 'product_id');
 	}
-
-
 }

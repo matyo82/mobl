@@ -12,8 +12,6 @@ class CartController extends Controller
 {
     public function addToCart(Product $product,Request $request)
     {
-        if(Auth::check())
-        {
             $request->validate([
                 'fabric_id' => 'nullable|exists:product_fabrics,id',
             ]);
@@ -38,12 +36,6 @@ class CartController extends Controller
             $inputs['number'] = 1;
             CartItem::create($inputs);
 
-            return back()->with('success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
-
-        }
-        else{
-            return redirect()->route('login');
-        }
-
+            return redirect()->route('front.product' , ['product' => $product->id])->with('success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
     }
 }

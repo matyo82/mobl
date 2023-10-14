@@ -16,7 +16,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }   
 
-	public function orderItems()
+	public function Items()
     {
         return $this->hasMany(OrderItem::class);
     }
@@ -26,22 +26,16 @@ class Order extends Model
         switch ($this->order_status){
             
 			     case 0:
-                $result = 'بررسی نشده';
+                $result = 'در حال پردازش';
                 break;
                  case 1:
-                $result = 'در انتظار تایید';
+                $result = 'ارسال شده';
                 break;
                   case 2:
-                $result = 'تایید شده';
+                $result = 'لغو شده';
                 break;
                  case 3:
-                $result = 'تایید نشده';
-                break;
-                 case 4:
-                $result = 'باطل شده';
-                break;
-                case 5:
-                $result = 'مرجوع شده';
+                $result = 'مرجوعی';
                 break;
         }
         return $result;
@@ -51,5 +45,4 @@ class Order extends Model
 	{
 	    return $this->belongsTo(Address::class);
 	}
-	
 }

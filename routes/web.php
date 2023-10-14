@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\AddressController;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\front\ProductController;
 use App\Http\Controllers\Front\HomeController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,16 +50,15 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
     Route::get('/', 'index')->name('profile');
     Route::put('/update', 'update')->name('profile.update');
 	//address
-        Route::post('/add-address', [AddressController::class, 'addAddress'])->name('profile.add-address');
-        Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('profile.edit-address');
+    Route::post('/add-address', [AddressController::class, 'addAddress'])->name('profile.add-address');
+    Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('profile.edit-address');
+    Route::delete('/profile/delete-address/{address}' , [AddressController::class , 'deleteAddress'])->name('profile.delete-address');
 });
 
 //cart
 Route::controller(ProfileController::class)->prefix('product')->name('front.')->middleware('auth')->group(function () {
-    Route::post('/add-to-cart/{product}', [\App\Http\Controllers\Front\CartController::class, 'addToCart'])->name('product.add-to-cart');
+    Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('product.add-to-cart');
 });
-
-
 
 
 Route::middleware([
