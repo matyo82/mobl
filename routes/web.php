@@ -56,8 +56,9 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
 });
 
 //cart
-Route::controller(ProfileController::class)->prefix('product')->name('front.')->middleware('auth')->group(function () {
-    Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('product.add-to-cart');
+Route::controller(CartController::class)->prefix('product')->name('front.')->middleware('auth')->group(function () {
+    Route::get('/', 'index')->name('cart');
+    Route::post('/add-to-cart/{product}','addToCart')->name('product.add-to-cart');
 });
 
 

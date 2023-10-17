@@ -12,7 +12,9 @@
                     @auth
                         <li class="ml-2"><a href="{{ route('front.profile') }}">حساب کاربری</a></li>
                         |
-                        <li class="mx-2"><a href="#">علاقه‌مندی ها</a></li>
+                        <li class="mx-2"><a href="#">علاقه مندی ها</a></li>
+                        |
+                        <li class="mx-2"><a href="{{route('front.cart')}}"> سبد خرید ({{$cartItems->count()}})</a></li>
                         |
                         <li class="mr-2">
                             <form method="POST" action="{{ route('logout') }}">
