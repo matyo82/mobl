@@ -50,9 +50,9 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
     Route::get('/', 'index')->name('profile');
     Route::put('/update', 'update')->name('profile.update');
 	//address
-    Route::post('/add-address', [AddressController::class, 'addAddress'])->name('profile.add-address');
-    Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('profile.edit-address');
-    Route::delete('/profile/delete-address/{address}' , [AddressController::class , 'deleteAddress'])->name('profile.delete-address');
+    Route::post('/add-address', [AddressController::class, 'store'])->name('profile.add-address');
+    Route::post('/update-address/{address}', [AddressController::class, 'update'])->name('profile.edit-address');
+    Route::post('/profile/delete-address/{address}' , [AddressController::class , 'delete'])->name('profile.delete-address');
 });
 
 //cart
