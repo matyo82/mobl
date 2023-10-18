@@ -30,7 +30,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-											@foreach($product->fabrics as $fabric)
+											@foreach($product->productFabrics()->get() as $fabric)
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex">

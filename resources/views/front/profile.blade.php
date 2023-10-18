@@ -9,7 +9,6 @@
             addressModal.addEventListener('show.bs.modal', event => {
                 // Button that triggered the modal
                 const button = event.relatedTarget
-
                 // Extract info from data-bs-* attributes
                 const province = button.getAttribute('data-bs-whatever1')
                 const city = button.getAttribute('data-bs-whatever2')
@@ -23,6 +22,7 @@
                 // and then do the updating in a callback.
 
                 // Update the modal's content.
+                const modalTitle = addressModal.querySelector('.modal-title')
                 const provinceCodeInput = addressModal.querySelector('.modal-body #province')
                 const cityCodeInput = addressModal.querySelector('.modal-body #city')
                 const addressCodeInput = addressModal.querySelector('.modal-body #address')
@@ -32,7 +32,9 @@
                 const statusInput = addressModal.querySelector('.modal-body #status')
                 const addressForm = addressModal.querySelector('.modal-body form')
 
+
                 if (button.classList.contains('edit-btn')) {
+                    modalTitle.textContent = 'ویرایش آدرس'
                     provinceCodeInput.value = province
                     cityCodeInput.value = city
                     addressCodeInput.textContent = address
@@ -42,6 +44,7 @@
                     status == 1 ? statusInput.checked = true : statusInput.checked = false
                     addressForm.setAttribute('action', `/profile/update-address/${addressID}`)
                 } else {
+                    modalTitle.textContent = 'آدرس جدید'
                     provinceCodeInput.value = null
                     cityCodeInput.value = null
                     addressCodeInput.textContent = null
@@ -52,7 +55,7 @@
                     addressForm.setAttribute('action', '/profile/add-address')
                 }
             })
-        }
+        } 
     </script>
 @endsection
 
@@ -129,8 +132,8 @@
                                                 <a href="{{ route('front.product', ['product' => $product->id]) }}">{{ $product->name }}</a>
                                             </h3>
                                             <div class="price">
-                                                <span>مبلغ کل : </span>
-                                                <span>{{ $item->final_total_price }}</span> <span>تومان</span>
+                                                <span>مبلغ : </span>
+                                                <span>{{ $item->final_product_price }}</span> <span>تومان</span>
                                             </div>
                                             <div class="text-success" style="text-decoration: underline">
                                                 تعداد سفارش : {{ $item->number }}
@@ -227,8 +230,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h1 class="modal-title fs-5" id="profileModalLabel">ویرایش پروفایل</h1>
+                    <button type="button" class="btn-close  ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="post" action="{{ route('front.profile.update') }}" enctype="multipart/form-data">
@@ -262,8 +265,8 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h1 class="modal-title fs-5" id="addressModalLabel">ویرایش آدرس</h1>
+                    <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="" enctype="multipart/form-data">
