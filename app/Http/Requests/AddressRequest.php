@@ -21,6 +21,7 @@ class AddressRequest extends FormRequest
      */
     public function rules(): array
     {
+        
 	  if($this->isMethod('post')){
         return [
             'province' => 'required',
@@ -29,7 +30,7 @@ class AddressRequest extends FormRequest
             'postal_code' => 'required',
             'no' => 'required',
             'unit' => 'required',
-			'status' => 'required|numeric|in:0,1',
+			'status' => 'numeric|in:0,1',
         ];
 	  }else{
 		return [
@@ -39,7 +40,7 @@ class AddressRequest extends FormRequest
             'postal_code' => 'required',
             'no' => 'required',
             'unit' => 'required',
-			'status' => 'required|numeric|in:0,1',
+			'status' => 'numeric|in:0,1',
 
         ];
 	  }

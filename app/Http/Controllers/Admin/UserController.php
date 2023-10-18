@@ -52,7 +52,7 @@ class UserController extends Controller
         if (User::create($validated)) {
             session()->flash('success', 'کاربر با موفقیت ایجاد شد');
         } else {
-            session()->flash('failed', 'ایجاد کابر با خطا مواجه شد');
+            session()->flash('failed', 'ایجاد کاربر با خطا مواجه شد');
         }
         return redirect()->route('admin.user.index');
     }
@@ -100,7 +100,7 @@ class UserController extends Controller
         if ($user->update($validated)) {
             session()->flash('success', 'کاربر با موفقیت ویرایش شد');
         } else {
-            session()->flash('failed', 'ویرایش کابر با خطا مواجه شد');
+            session()->flash('failed', 'ویرایش کاربر با خطا مواجه شد');
         }
         return redirect()->route('admin.user.index');
     }
