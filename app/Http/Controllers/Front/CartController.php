@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        if(Auth::check()){
+            $cartItems=CartItem::where('user_id',Auth::user()->id)->get();
+            return view('front.cart',compact('cartItems'));
+        }else{
+            return to_route('register');
+        }
+    }
+
+
     public function addToCart(Product $product,Request $request)
     {
             $request->validate([
@@ -19,14 +30,14 @@ class CartController extends Controller
             $cartItems = CartItem::where('product_id', $product->id)->where('user_id', auth()->user()->id)->get();
 
             // age mahsol ghablan to sabade user bode
-            foreach($cartItems as $cartItem)
-            {
-                if($cartItem->fabric_id == $request->fabric_id)
-                {
-                    $cartItem->update(['number' =>$cartItem->number + 1]);
-                    return back()->with('success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
-                }
-            }
+//            foreach($cartItems as $cartItem)
+//            {
+//                if($cartItem->fabric_id == $request->fabric_id)
+//                {
+//                    $cartItem->update(['number' =>$cartItem->number + $request->number]);
+//                    return back()->with('success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
+//                }
+//            }
 
             // age nabode
             $inputs = [];

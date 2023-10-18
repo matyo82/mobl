@@ -9,78 +9,25 @@
                 <section class="orders">
                     <h2>سبد خرید</h2>
                     <ul>
+					
+					@foreach($cartItems as $cartItem)
                         <li class="card">
                             <div class="img-container">
                                 <a href="#">
-                                    <img src="../assets/img/products/Furniture-2.jpg" alt="" />
+                                    <img src="{{asset($cartItem->product->image)}}" alt="" />
                                 </a>
                             </div>
                             <div class="text-content">
                                 <h3>
-                                    <a href="#">مبل راحتی</a>
+                                    <a href="#">{{$cartItem->product->name}}</a>
                                 </h3>
                                 <div class="price">
-                                    <span>7650000</span> <span>تومان</span>
-                                </div>
-                                <div class="more-info">
-                                    شماره سفارش: <span>123456789</span>
+                                    <span>{{$cartItem->product->price}}</span> <span>تومان</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="card">
-                            <div class="img-container">
-                                <a href="#">
-                                    <img src="../assets/img/products/Furniture-2.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div class="text-content">
-                                <h3>
-                                    <a href="#">مبل راحتی</a>
-                                </h3>
-                                <div class="price">
-                                    <span>11545000</span> <span>تومان</span>
-                                </div>
-                                <div class="more-info">
-                                    شماره سفارش: <span>123456789</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="card">
-                            <div class="img-container">
-                                <a href="#">
-                                    <img src="../assets/img/products/Furniture-2.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div class="text-content">
-                                <h3>
-                                    <a href="#">مبل راحتی</a>
-                                </h3>
-                                <div class="price">
-                                    <span>12670000</span> <span>تومان</span>
-                                </div>
-                                <div class="more-info">
-                                    شماره سفارش: <span>123456789</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="card">
-                            <div class="img-container">
-                                <a href="#">
-                                    <img src="../assets/img/products/Furniture-2.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div class="text-content">
-                                <h3>
-                                    <a href="#">مبل راحتی</a>
-                                </h3>
-                                <div class="price">
-                                    <span>26900000</span> <span>تومان</span>
-                                </div>
-                                <div class="more-info">
-                                    شماره سفارش: <span>123456789</span>
-                                </div>
-                            </div>
-                        </li>
+						@endforeach
+                       
                     </ul>
                 </section>
             </section>
