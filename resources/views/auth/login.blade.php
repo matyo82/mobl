@@ -24,31 +24,31 @@
                 <div class="form-container">
                     <div class="form-content">
 
-                        <h1 class="">Log In website</h1>
-                        <p class="signup-link">New Here? <a href="{{ url('/register') }}">Create an account</a></p>
+                        <h1 class="">ورود</h1>
+                        <p class="signup-link">ثبت نام نکرده اید? <a href="{{ url('/register') }}">ثبت نام</a></p>
                         <form class="text-left" method="post" action="{{ route('login') }}">
                             @csrf
                             <div class="form">
 
                                 <div id="username-field" class="field-wrapper input">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                    <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+                                    <input id="email" name="email" type="text" class="form-control" placeholder="ایمیل">
                                 </div>
 
                                 <div id="password-field" class="field-wrapper input mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                    <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                                    <input id="password" name="password" type="password" class="form-control" placeholder="پسوورد">
                                 </div>
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper toggle-pass">
-                                        <p class="d-inline-block">Show Password</p>
+                                        <p class="d-inline-block">دیدن پسورورد</p>
                                         <label class="switch s-primary">
                                             <input type="checkbox" id="toggle-password" class="d-none">
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
                                     <div class="field-wrapper">
-                                        <button type="submit" class="btn btn-primary">Log In</button>
+                                        <button type="submit" class="btn btn-primary">ورود</button>
                                     </div>
 
                                 </div>
@@ -58,13 +58,13 @@
                                         <label class="new-control new-checkbox checkbox-outline-primary">
                                           <input type="checkbox" class="new-control-input">
                                           <span class="new-control-indicator"></span>
-                                            Keep me logged in
+                                            مرا بخاط بسپار
                                         </label>
                                     </div>
                                 </div>
 
                                 <div class="field-wrapper">
-                                    <a href="#" class="forgot-pass-link">Forgot Password?</a>
+                                    <a href="{{route('password.request')}}" class="forgot-pass-link">پسورورد را فراموش کرده اید?</a>
                                 </div>
 
                             </div>
