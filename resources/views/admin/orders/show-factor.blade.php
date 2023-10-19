@@ -76,20 +76,7 @@
                                     {{$order->address->unit}}
                                     </td>
                                  </tr>
-								 
-								 <tr class="border-bottom">
-                                    <th class="text-left text-white font-weight-bolder">نام تحویل گیرنده
-                                    <td class="text-left text-white font-weight-bolder">
-							        {{$order->address->recipient_first_name}}
-                                    </td>
-                                 </tr>
-								 
-								 <tr class="border-bottom">
-                                    <th class="text-left text-white font-weight-bolder">نام خانوادگی تحویل گیرنده</th>
-                                    <td class="text-left text-white font-weight-bolder">
-                                    {{$order->address->recipient_last_name}}
-                                    </td>
-                                 </tr>
+
 								 
 								 <tr class="border-bottom">
                                     <th class="text-left text-white font-weight-bolder">درصد تخفیف اعمال شده</th>

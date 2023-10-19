@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\Address;
+use App\Models\OrderItem;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,15 +67,31 @@ class CartController extends Controller
 		'address_id'=>'required||exists:addresses,id',
 		'prices'=>'required',
 		]);
-		$address=Address::where('id',$validated['address_id'])->first();
 		$user=auth()->user();
+		$cartItems=CartItem::where('user_id',$user->id)->get();
+		$address=Address::where('id',$validated['address_id'])->first();
+
+		
+		//create order
 		$inputs['user_id']=$user->id;
 		$inputs['address_id']=$validated['address_id'];
 		$inputs['address_object']=$address;
 		$inputs['order_final_amount']=$validated['prices'];
 		$inputs['order_status']=3;
-		Order::updateOrCreate(['user_id' => $user->id, 'order_status' => 3],$inputs);
+		$order=Order::create($inputs);
 		
+		
+		//craete orderItems
+		foreach($cartItems as $cartItem){
+	    OrderItem::create([
+		'order_id'=>$order->id,
+	    'product_id'=>$cartItem->product_id,
+		'product'=>$cartItem->product,
+		'final_product_price'=>$cartItem->product->price,
+		'final_total_price'=>$cartItem->product->price*$cartItem->number,
+		]);
+		$cartItem->delete();
+		}
 		dd('order sabt shod');
 		
 	}

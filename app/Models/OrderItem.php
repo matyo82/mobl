@@ -9,8 +9,10 @@ use App\Models\Product;
 class OrderItem extends Model
 {
     use HasFactory;
+	
+    protected $guarded=['id'];
 
-	public function product()
+	public function singleProduct()
 	{
 	    return $this->belongsTo(Product::class, 'product_id');
 	}

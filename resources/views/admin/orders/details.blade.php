@@ -45,7 +45,7 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <p class="align-self-center mb-0">{{$orderItem->singleProduct->name}}</p>
+                                                    <p class="align-self-center mb-0">{{json_decode($orderItem->product)->name}}</p>
                                                 </div>
                                             </td>
                                             <td>
@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <p class="align-self-center mb-0">{{$orderItem->singleProduct->price}}
+                                                    <p class="align-self-center mb-0">{{json_decode($orderItem->product)->price}}
                                                         تومان
                                                     </p>
                                                 </div>

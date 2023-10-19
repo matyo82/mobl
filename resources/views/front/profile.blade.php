@@ -123,9 +123,9 @@
                                 <hr>
                             </div>
                             <ul class="pt-0">
-                                @foreach ($order->items()->get() as $item)
+                                @foreach ($order->orderItems()->get() as $item)
                                     @php
-                                        $product = $item->product()->first();
+                                        $product = $item->singleProduct()->first();
                                     @endphp
                                     <li class="card">
                                         <div class="img-container">

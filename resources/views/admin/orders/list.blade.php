@@ -61,7 +61,8 @@
 
                                                     <td>
                                                         <div class="d-flex">
-                                                            <p class="align-self-center mb-0">{{$order->order_discount_percentage}} تومان </p>
+                                                            <p class="align-self-center mb-0">{{$order->order_discount_percentage ?? 0}}</p>
+															تومان 
                                                         </div>
                                                     </td>
                                                     <td>
