@@ -9,6 +9,9 @@
             <!-- Top Menu -->
             <div class="top-menu">
                 <ul>
+                        <li class="ml-2"><a href="{{ route('index') }}">خانه</a></li>
+					    |
+
                     @auth
                         <li class="ml-2"><a href="{{ route('front.profile') }}">حساب کاربری</a></li>
                         |

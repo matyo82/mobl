@@ -10,6 +10,8 @@ use App\Models\OrderItem;
 class Order extends Model
 {
     use HasFactory;
+	
+	protected $guarded=['id'];
 
     public function user()
     {
@@ -34,7 +36,10 @@ class Order extends Model
                   case 2:
                 $result = 'لغو شده';
                 break;
-                 case 3:
+                  case 3:
+                $result = 'ثبت شده';
+                break;
+                 case 4:
                 $result = 'مرجوعی';
                 break;
         }

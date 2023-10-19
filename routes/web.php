@@ -56,9 +56,12 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
 });
 
 //cart
-Route::controller(CartController::class)->prefix('product')->name('front.')->middleware('auth')->group(function () {
+Route::controller(CartController::class)->prefix('cart')->name('front.')->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('cart');
     Route::post('/add-to-cart/{product}','addToCart')->name('product.add-to-cart');
+	Route::get('/remove-from-cart/{cartItem}', 'removeFromCart')->name('product.remove-from-cart');
+	Route::post('/submit-order','submitOrder')->name('product.submit-order');
+
 });
 
 

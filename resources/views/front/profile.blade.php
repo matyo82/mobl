@@ -105,6 +105,12 @@
 
                                     @case(3)
                                         <div class="status returned">
+                                            <i class="fa fa-arrow-left"></i> ثبت شده
+                                        </div>
+                                    @break 
+
+									@case(4)
+                                        <div class="status returned">
                                             <i class="fa fa-arrow-left"></i> مرجوعی
                                         </div>
                                     @break

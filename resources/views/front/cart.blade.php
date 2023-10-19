@@ -4,12 +4,14 @@
 
 @section('content')
     <main class="main-content">
+	<form method="POST" action="{{route('front.product.submit-order')}}">
+	@csrf
         <div class="container">
             <section class="order-related">
                 <section class="orders">
                     <h2>سبد خرید</h2>
                     <ul>
-					
+					 <input type="text" name="prices" value="{{$allPrices*1000}}" hidden  />
 					@foreach($cartItems as $cartItem)
                         <li class="card">
                             <div class="img-container">
@@ -24,24 +26,65 @@
                                 <div class="price">
                                     <span>{{$cartItem->product->price}}</span> <span>تومان</span>
                                 </div>
+								
+							    <a href="{{route('front.product.remove-from-cart',$cartItem)}}" class="btn delete-btn">
+                                   حذف
+                                </a>
+                            </div>
+                        </li>
+					@endforeach
+                    </ul>
+                </section>
+				
+				
+				
+                <section class="orders">
+                    <h2>ادرس ها</h2>
+                    <ul>
+					@foreach($addresses as $address)
+					   <li class="card">
+                            <input type="radio" name="address_id" value="{{ $address->id }}" id="a-{{ $address->id }}"  />
+                            <div class="text-content">
+                                <h3>
+                                    <a href="#">{{$address->city}}</a>
+                                </h3>
+                                <div class="price">
+                                    <span>{{$address->province}}-پلاک{{$address->no}}-واحد{{$address->unit}}</span>
+                                </div>
                             </div>
                         </li>
 						@endforeach
-                       
+														@error('address_id')
+                                       <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                             <strong>
+                                               {{ $message }}
+                                             </strong>
+                                       </span>
+                                @enderror
                     </ul>
                 </section>
             </section>
-            <div class="profile-info">
+			
+		  <div class="profile-info">
                 <h3>قیمت کالا ها</h3>
-                <div><span class="total-price">0</span> تومان</div>
+                <div><span class="total-price">{{$allPrices*1000}}</span> تومان</div>
                 <div class="links">
-                    <button type="button" class="btn btn-accent" id="order-btn" style="display: flex; gap: 0.4em">
+                    <button type="submit" class="btn btn-accent" id="order-btn" style="display: flex; gap: 0.4em">
                         <i class="fa fa-shopping-cart"></i> <span>ثبت سفارش</span>
                     </button>
                 </div>
             </div>
         </div>
+		</form>
     </main>
+
+
+
+
+
+
+
+
 
     <div class="select-address-modal">
         <div class="overlay"></div>

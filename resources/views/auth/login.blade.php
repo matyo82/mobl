@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper toggle-pass">
-                                        <p class="d-inline-block">دیدن پسورورد</p>
+                                        <p class="d-inline-block">دیدن پسوورد</p>
                                         <label class="switch s-primary">
                                             <input type="checkbox" id="toggle-password" class="d-none">
                                             <span class="slider round"></span>
@@ -64,7 +64,7 @@
                                 </div>
 
                                 <div class="field-wrapper">
-                                    <a href="{{route('password.request')}}" class="forgot-pass-link">پسورورد را فراموش کرده اید?</a>
+                                    <a href="{{route('password.request')}}" class="forgot-pass-link">پسوورد را فراموش کرده اید؟</a>
                                 </div>
 
                             </div>

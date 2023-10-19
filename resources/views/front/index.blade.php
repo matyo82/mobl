@@ -66,7 +66,7 @@
                             استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                             در ستون و سطرآنچنان .
                         </p>
-                        <a href="#" class="btn btn-accent">مشاهده</a>
+                        <a href="{{route('front.product-list')}}" class="btn btn-accent">مشاهده</a>
                     </div>
                     <img src="./assets/img/products/Furniture-1.jpg" alt="" loading="lazy" />
                 </div>
@@ -79,7 +79,7 @@
                             استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                             در ستون و سطرآنچنان .
                         </p>
-                        <a href="#" class="btn btn-accent">مشاهده</a>
+                        <a href="{{route('front.product-list')}}" class="btn btn-accent">مشاهده</a>
                     </div>
                     <img src="./assets/img/products/Furniture-2.jpg" alt="" loading="lazy" />
                 </div>
@@ -92,7 +92,7 @@
                             استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                             در ستون و سطرآنچنان .
                         </p>
-                        <a href="#" class="btn btn-accent">مشاهده</a>
+                        <a href="{{route('front.product-list')}}" class="btn btn-accent">مشاهده</a>
                     </div>
                     <img src="./assets/img/products/Curved-Furniture.jpg" alt="" loading="lazy" />
                 </div>
@@ -105,7 +105,7 @@
                             استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                             در ستون و سطرآنچنان .
                         </p>
-                        <a href="#" class="btn btn-accent">مشاهده</a>
+                        <a href="{{route('front.product-list')}}" class="btn btn-accent">مشاهده</a>
                     </div>
                     <img src="./assets/img/products/Furniture-2.jpg" alt="" loading="lazy" />
                 </div>
@@ -118,7 +118,7 @@
                             استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                             در ستون و سطرآنچنان .
                         </p>
-                        <a href="#" class="btn btn-accent">مشاهده</a>
+                        <a href="{{route('front.product-list')}}" class="btn btn-accent">مشاهده</a>
                     </div>
                     <img src="./assets/img/products/Furniture-1.jpg" alt="" loading="lazy" />
                 </div>

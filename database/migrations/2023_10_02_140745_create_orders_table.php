@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('address_id')->nullable()->constrained('addresses')->onUpdate('cascade')->onDelete('cascade');        			
-            $table->longText('address_object')->nullable();
+            $table->foreignId('address_id')->nullable()->constrained('addresses')->onUpdate('cascade')->onDelete('cascade');    $table->longText('address_object')->nullable();
             $table->decimal('order_final_amount',20, 3)->nullable();
             $table->decimal('order_discount_amount',20, 3)->nullable();
             $table->decimal('order_discount_percentage',20, 3)->nullable();
