@@ -39,7 +39,7 @@
                 </p>
             </div>
 
-            <div class="shadow">
+            <div class="shadow ms-4">
                 <ul class="pagination">
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())

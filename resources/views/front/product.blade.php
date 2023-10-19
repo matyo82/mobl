@@ -5,11 +5,11 @@
 @section('content')
     <main class="main-content">
         @if (session()->has('success'))
-            <div class="alert alert-success col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
+            <div class="alert alert-success col-10 mx-auto text-center" role="alert">
                 {{ session()->get('success') }}
             </div>
         @elseif(session()->has('failed'))
-            <div class="alert alert-danger col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
+            <div class="alert alert-danger col-10 mx-auto text-center" role="alert">
                 {{ session()->get('failed') }}
             </div>
         @endif
@@ -51,10 +51,10 @@
                 <div class="price"><span> {{ $product->price }} تومان </span></div>
                 <form action="{{ route('front.product.add-to-cart', $product) }}" method="POST" id="addToCart">
                     @csrf
-                    <div class="add-to-cart-btn">
-                        <div class="store-info">نوع پارچه :</div>
-                        <select name="fabric_id" class="form-control-sm" style="float: left;margin: -22px 39px;">
-                            @foreach ($product->fabrics as $fabric)
+                    <div class="add-to-cart-btn d-flex align-items-center">
+                        <div class="store-info ms-auto">نوع پارچه :</div>
+                        <select name="fabric_id" class="form-select form-select-sm text-center shadow" style="width: fit-content">
+                            @foreach ($product->productFabrics()->get() as $fabric)
                                 <option value="{{ $fabric->id }}">{{ $fabric->fabric_name }}</option>
                             @endforeach
                         </select>

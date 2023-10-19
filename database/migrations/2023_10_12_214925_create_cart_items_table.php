@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fabric_id')->constrained('product_fabrics')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('number')->default(1);
             $table->timestamps();
             $table->softDeletes();

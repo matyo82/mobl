@@ -16,17 +16,14 @@
                         <div class="img-container">
                             <img src="{{ asset($product->image) }}" alt="" style="width: 115px;height: 110px;">
                         </div>
-                        <h3><a href="{{ route('front.product' , ['product' => $product->id]) }}">{{ $product->name }}</a></h3>
+                        <h3><a href="{{ route('front.product', ['product' => $product->id]) }}">{{ $product->name }}</a></h3>
                         <div class="card-footer">
                             <div class="price">
                                 {{ $product->price }} تومان
                             </div>
-                            <form action="{{route('front.product.add-to-cart',$product->id)}}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-accent">
-                                    افزودن به سبد
-                                </button>
-                            </form>
+                            <a type="button" href="{{ route('front.product', ['product' => $product->id]) }}" class="btn btn-accent">
+                                افزودن به سبد
+                            </a>
                         </div>
                     </div>
                 @endforeach
@@ -35,7 +32,7 @@
         </div>
 
         {{-- pagination --}}
-        <div class="d-flex justify-content-center my-5">
+        <div class="d-flex justify-content-center my-5" dir="ltr">
             {{ $products->links() }}
         </div>
     </main>

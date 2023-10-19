@@ -32,7 +32,7 @@ class Product extends Model
 		return $this->hasMany(ProductMeta::class);
 	}
 
-	public function fabrics()
+	public function productFabrics()
 	{
 		return $this->hasMany(ProductFabric::class);
 	}
