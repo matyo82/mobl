@@ -182,6 +182,7 @@ return [
         "available" => "موجود",
         "size" => "اندازه",
 		"file" => "فایل",
-		"fullname" => "نام کامل"
+		"fullname" => "نام کامل",
+        "address_id" => "آدرس"
     ],
 ];

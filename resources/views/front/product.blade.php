@@ -46,7 +46,7 @@
             </article>
 
             <!-- Sidebar for more info and access -->
-            <aside class="sidebar">
+            <aside class="sidebar shadow-sm border">
                 <div class="store-info">موجودی انبار :{{ $product->marketable_number }}</div>
                 <div class="price"><span> {{ $product->price }} تومان </span></div>
                 <form action="{{ route('front.product.add-to-cart', $product) }}" method="POST" id="addToCart">

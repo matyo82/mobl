@@ -55,7 +55,7 @@
                     addressForm.setAttribute('action', '/profile/add-address')
                 }
             })
-        } 
+        }
     </script>
 @endsection
 
@@ -68,6 +68,10 @@
         @elseif(session()->has('failed'))
             <div class="alert alert-success col-10 mx-auto text-center fs-6 mt-1" role="alert">
                 {{ session()->get('failed') }}
+            </div>
+        @elseif(session()->has('payment-success'))
+            <div class="alert alert-success col-10 mx-auto text-center fs-6 mt-1" role="alert">
+                {{ session()->get('payment-success') }}
             </div>
         @elseif ($errors->any())
             <div class="alert alert-danger col-10 mx-auto mt-1">
@@ -89,14 +93,14 @@
                                 <hr>
                                 @switch($order->order_status)
                                     @case(0)
-                                        <div class="status processing text-primary">
-                                            <i class="fa fa-clock"></i> درحال پردازش
+                                        <div class="status processing text-warning">
+                                            <i class="fa fa-clock"></i> در انتظار پرداخت
                                         </div>
                                     @break
 
                                     @case(1)
                                         <div class="status complete">
-                                            <i class="fa fa-check-square"></i> ارسال شده
+                                            <i class="bi bi-bag-check"></i> ارسال شده
                                         </div>
                                     @break
 
@@ -107,18 +111,16 @@
                                     @break
 
                                     @case(3)
-                                        <div class="status returned">
-                                            <i class="fa fa-arrow-left"></i> ثبت شده
-                                        </div>
-                                    @break 
-
-									@case(4)
-                                        <div class="status returned">
-                                            <i class="fa fa-arrow-left"></i> مرجوعی
+                                        <div class="status returned text-info">
+                                            <i class="fa fa-check-square"></i> ثبت شده
                                         </div>
                                     @break
 
-                                    @default
+                                    @case(4)
+                                        <div class="status returned text-secondary">
+                                            <i class="fa fa-arrow-left"></i> مرجوعی
+                                        </div>
+                                    @break
                                 @endswitch
                                 <hr>
                             </div>
@@ -178,16 +180,8 @@
                                         {{ $address->postal_code }}
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#addressModal" 
-                                        data-bs-whatever1="{{ old('province') ?? $address->province }}" 
-                                        data-bs-whatever2="{{ old('city') ?? $address->city }}" 
-                                        data-bs-whatever3="{{ old('address') ?? $address->address }}" 
-                                        data-bs-whatever4="{{ old('no') ?? $address->no }}" 
-                                        data-bs-whatever5="{{ old('unit') ?? $address->unit }}" 
-                                        data-bs-whatever6="{{ old('postal_code') ?? $address->postal_code }}" 
-                                        data-bs-whatever7="{{ old('status') ?? $address->status }}" 
-                                        data-bs-whatever8="{{ $address->id }}">
-                                        
+                                        <button type="button" class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#addressModal" data-bs-whatever1="{{ old('province') ?? $address->province }}" data-bs-whatever2="{{ old('city') ?? $address->city }}" data-bs-whatever3="{{ old('address') ?? $address->address }}" data-bs-whatever4="{{ old('no') ?? $address->no }}" data-bs-whatever5="{{ old('unit') ?? $address->unit }}" data-bs-whatever6="{{ old('postal_code') ?? $address->postal_code }}" data-bs-whatever7="{{ old('status') ?? $address->status }}" data-bs-whatever8="{{ $address->id }}">
+
                                             <i class="fa fa-pencil text-info"></i>
                                         </button>
                                         <form class="d-inline" action="{{ route('front.profile.delete-address', $address->id) }}" method="post">

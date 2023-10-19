@@ -28,7 +28,7 @@ class Order extends Model
         switch ($this->order_status){
             
 			     case 0:
-                $result = 'در حال پردازش';
+                $result = 'در انتظار پرداخت';
                 break;
                  case 1:
                 $result = 'ارسال شده';

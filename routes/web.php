@@ -60,8 +60,8 @@ Route::controller(CartController::class)->prefix('cart')->name('front.')->middle
     Route::get('/', 'index')->name('cart');
     Route::post('/add-to-cart/{product}','addToCart')->name('product.add-to-cart');
 	Route::get('/remove-from-cart/{cartItem}', 'removeFromCart')->name('product.remove-from-cart');
-	Route::post('/submit-order','submitOrder')->name('product.submit-order');
-
+	Route::post('/payement','payment')->name('cart.payment');
+	Route::get('/verify-payment', 'verifyPayment')->name('cart.verifyPayment');
 });
 
 
