@@ -21,7 +21,7 @@
 <body>
     <!-- Header Section -->
     @include('front.layouts.header')
-
+	
     {{-- Content Section --}}
     @yield('content')
 

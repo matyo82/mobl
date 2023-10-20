@@ -17,7 +17,7 @@
             <!-- Product card section -->
             <article class="product">
                 <div class="product-gallery">
-                    <div class="main-img img-container">
+                    <div class="main-img img-container" style="margin-left: 10px">
                         <img src="{{ asset($product->image) }}" alt="" />
                     </div>
                     <div class="other-img"></div>
@@ -87,60 +87,26 @@
         </div>
     </section>
 
-    {{-- <section class="similar-products">
+    <section class="similar-products">
     <div class="container">
         <h3>محصولات مشابه</h3>
         <ul>
+		@foreach($products as $product)
             <li>
-                <a href="#">
+                <a href="{{route('front.product',$product)}}">
                     <div class="img-container">
-                        <img src="../assets/img/products/Furniture-1.jpg" alt=""/>
+                        <img src="{{asset($product->image)}}" alt=""/>
                     </div>
-                    <h4>محصول مشابه شماره 1</h4>
-                    <div class="price"><span>تومان</span> 15000000</div>
+                    <h4>{{$product->name}}</h4>
+                    <div class="price"><span>تومان</span> {{$product->price}}</div>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <div class="img-container">
-                        <img src="../assets/img/products/Furniture-1.jpg" alt=""/>
-                    </div>
-                    <h4>محصول مشابه شماره 1</h4>
-                    <div class="price"><span>تومان</span> 15000000</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="img-container">
-                        <img src="../assets/img/products/Furniture-1.jpg" alt=""/>
-                    </div>
-                    <h4>محصول مشابه شماره 1</h4>
-                    <div class="price"><span>تومان</span> 15000000</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="img-container">
-                        <img src="../assets/img/products/Furniture-1.jpg" alt=""/>
-                    </div>
-                    <h4>محصول مشابه شماره 1</h4>
-                    <div class="price"><span>تومان</span> 15000000</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="img-container">
-                        <img src="../assets/img/products/Furniture-1.jpg" alt=""/>
-                    </div>
-                    <h4>محصول مشابه شماره 1</h4>
-                    <div class="price"><span>تومان</span> 15000000</div>
-                </a>
-            </li>
+		@endforeach
         </ul>
     </div>
-</section> --}}
+</section>
 
-    {{-- <section class="specifications">
+    <section class="specifications">
     <div class="container">
         <h2>مشخصات</h2>
         <table class="spec-table">
@@ -160,15 +126,18 @@
     <div class="container">
         <h2>نوع پارچه</h2>
         <table class="spec-table">
-            @foreach ($product->fabrics as $fabric)
+            @forelse ($product->productFabrics as $fabric)
                 <tr>
                     <td>نام</td>
                     <td>{{ $fabric->fabric_name }}</td>
                 </tr>
-            @endforeach
+				
+				@empty
+                <h2>پارچه ای برای این محصول یافت نشد</h2>
+            @endforelse
         </table>
     </div>
-</section> --}}
+</section>
 
     <!-- Comments Section -->
     {{-- <section class="comments" id="comments">

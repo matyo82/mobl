@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\AddressController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\front\ProductController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\FavoriteController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -41,7 +42,7 @@ Route::get('/about' ,  function(){
 Route::controller(ProductController::class)->name('front.')->group(function(){
     Route::get('product-list/{category?}' , 'list')->name('product-list');
     Route::get('product/{product}' , 'single')->name('product');
-    Route::get('product/{product}/add-to-favorite' , 'addToFavorite')->name('product.addToFavorite');
+    Route::get('/add-to-favorite/{product}' , 'addToFavorite')->name('product.addToFavorite');
 });
 
 
@@ -52,7 +53,13 @@ Route::controller(ProfileController::class)->prefix('profile')->name('front.')->
 	//address
     Route::post('/add-address', [AddressController::class, 'store'])->name('profile.add-address');
     Route::post('/update-address/{address}', [AddressController::class, 'update'])->name('profile.edit-address');
-    Route::post('/profile/delete-address/{address}' , [AddressController::class , 'delete'])->name('profile.delete-address');
+    Route::delete('/profile/delete-address/{address}' , [AddressController::class , 'deleteAddress'])->name('profile.delete-address');
+});
+
+//favorites
+Route::controller(FavoriteController::class)->prefix('favorite')->name('front.')->middleware('auth')->group(function () {
+    Route::get('/', 'index')->name('favorite');
+	Route::get('/remove-from-favorite/{product}', 'removeFromCart')->name('favorite.remove-from-favorite');
 });
 
 //cart

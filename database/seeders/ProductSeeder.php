@@ -16,8 +16,11 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-              DB::statement('truncate products');
-                Product::factory(30)->has(ProductFabric::factory()->count(4))->create();
+
+			  DB::statement('truncate products');
+			  DB::statement('truncate product_fabrics');
+			  Product::factory(30)->has(ProductFabric::factory()->count(4))->create();;			  
+
     }
 	
 }

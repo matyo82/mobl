@@ -24,7 +24,9 @@ class ProductController extends Controller
     public function single(Product $product)
     {
 //        dd(auth()->user()->products);
-        return view('front.product', ['product' => $product]);
+        $products = new Product();
+        $products = $products->latest()->paginate(4);
+        return view('front.product', compact('product','products'));
     }
 
     public function addToFavorite(Product $product)

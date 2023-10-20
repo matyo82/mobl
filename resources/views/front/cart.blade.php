@@ -62,7 +62,7 @@
                     <section class="orders">
                         <h2>ادرس ها</h2>
                         <ul>
-                            @foreach ($addresses as $address)
+                            @forelse ($addresses as $address)
                                 <li class="card">
                                     <input type="radio" name="address_id" value="{{ $address->id }}" id="a-{{ $address->id }}" />
                                     <div class="text-content">
@@ -74,7 +74,11 @@
                                         </div>
                                     </div>
                                 </li>
-                            @endforeach
+								
+								@empty
+                            <h5>برای ثبت سفارش باید ابتدا یک ادرس ایجاد کنید</h5>
+							<a class="btn btn-sm btn-warning" href="{{route('front.profile')}}">ایجاد ادرس</a>
+                            @endforelse
                         </ul>
                     </section>
                 </section>
