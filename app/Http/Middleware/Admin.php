@@ -18,6 +18,6 @@ class Admin
         if (auth()->user()->isAdmin())
             return $next($request);
         else
-            abort(403);
+            return abort(403);
     }
 }
