@@ -20,11 +20,8 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |
 */
 
-Route::get('a' , function(){
+Route::get('test' , function(){
     return auth()->loginUsingId(1); // quick login for test
-});
-Route::get('b' , function(){
-    return auth()->logout(); // quick logout for test
 });
 
 

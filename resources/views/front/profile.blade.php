@@ -86,75 +86,81 @@
             <section class="order-related">
                 <section class="orders">
                     <h2>لیست سفارشات</h2>
-                    @foreach ($user->orders()->get() as $order)
-                        <div class="card d-flex mt-4 shadow-sm">
-                            <h3>سفارش {{ $order->created_at }}</h3>
-                            <div>وضعیت :
-                                <hr>
-                                @switch($order->order_status)
-                                    @case(0)
-                                        <div class="status processing text-warning">
-                                            <i class="fa fa-clock"></i> در انتظار پرداخت
-                                        </div>
-                                    @break
+                    @if ($user->orders->count())
+                        @foreach ($user->orders()->latest()->get() as $order)
+                            <div class="card d-flex mt-4 shadow-sm">
+                                <h3>سفارش {{ $order->created_at }}</h3>
+                                <div>وضعیت :
+                                    <hr>
+                                    @switch($order->order_status)
+                                        @case(0)
+                                            <div class="status processing text-warning">
+                                                <i class="fa fa-clock"></i> در انتظار پرداخت
+                                            </div>
+                                        @break
 
-                                    @case(1)
-                                        <div class="status complete">
-                                            <i class="bi bi-bag-check"></i> ارسال شده
-                                        </div>
-                                    @break
+                                        @case(1)
+                                            <div class="status complete">
+                                                <i class="bi bi-bag-check"></i> ارسال شده
+                                            </div>
+                                        @break
 
-                                    @case(2)
-                                        <div class="status canceled">
-                                            <i class="fa fa-close"></i> لغو شده
-                                        </div>
-                                    @break
+                                        @case(2)
+                                            <div class="status canceled">
+                                                <i class="fa fa-close"></i> لغو شده
+                                            </div>
+                                        @break
 
-                                    @case(3)
-                                        <div class="status returned text-info">
-                                            <i class="fa fa-check-square"></i> ثبت شده
-                                        </div>
-                                    @break
+                                        @case(3)
+                                            <div class="status returned text-info">
+                                                <i class="fa fa-check-square"></i> ثبت شده
+                                            </div>
+                                        @break
 
-                                    @case(4)
-                                        <div class="status returned text-secondary">
-                                            <i class="fa fa-arrow-left"></i> مرجوعی
-                                        </div>
-                                    @break
-                                @endswitch
-                                <hr>
+                                        @case(4)
+                                            <div class="status returned text-secondary">
+                                                <i class="fa fa-arrow-left"></i> مرجوعی
+                                            </div>
+                                        @break
+                                    @endswitch
+                                    <hr>
+                                </div>
+                                <ul class="pt-0">
+                                    @foreach ($order->orderItems()->get() as $item)
+                                        @php
+                                            $product = $item->singleProduct()->first();
+                                        @endphp
+                                        <li class="card">
+                                            <div class="img-container">
+                                                <a href="{{ route('front.product', ['product' => $product->id]) }}">
+                                                    <img src="{{ asset($product->image) }}" alt="" />
+                                                </a>
+                                            </div>
+                                            <div class="text-content">
+                                                <h3>
+                                                    <a href="{{ route('front.product', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                                                </h3>
+                                                <div class="price">
+                                                    <span>مبلغ : </span>
+                                                    <span>{{ $item->final_product_price }}</span> <span>تومان</span>
+                                                </div>
+                                                <div class="text-success" style="text-decoration: underline">
+                                                    تعداد سفارش : {{ $item->number }}
+                                                </div>
+                                                <div class="more-info">
+                                                    شماره سفارش: <span>{{ rand(10000000, 99999999) }}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <ul class="pt-0">
-                                @foreach ($order->orderItems()->get() as $item)
-                                    @php
-                                        $product = $item->singleProduct()->first();
-                                    @endphp
-                                    <li class="card">
-                                        <div class="img-container">
-                                            <a href="{{ route('front.product', ['product' => $product->id]) }}">
-                                                <img src="{{ asset($product->image) }}" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="text-content">
-                                            <h3>
-                                                <a href="{{ route('front.product', ['product' => $product->id]) }}">{{ $product->name }}</a>
-                                            </h3>
-                                            <div class="price">
-                                                <span>مبلغ : </span>
-                                                <span>{{ $item->final_product_price }}</span> <span>تومان</span>
-                                            </div>
-                                            <div class="text-success" style="text-decoration: underline">
-                                                تعداد سفارش : {{ $item->number }}
-                                            </div>
-                                            <div class="more-info">
-                                                شماره سفارش: <span>{{ rand(10000000, 99999999) }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
+                        @endforeach
+                    @else
+                        <div class="fs-2 text-secondary d-flex justify-content-center align-items-center" style="height: 20rem !important">
+                            در حال حاضر آیتمی برای نمایش وجود ندارد!
                         </div>
-                    @endforeach
+                    @endif
                 </section>
 
                 <section class="addresses mb-5">
@@ -206,10 +212,10 @@
                 <div><i class="fa fa-at"></i>{{ $user->email }}</div>
                 <div><i class="fa fa-user"></i>نوع کاربر:
                     <span>
-                        @if ($user->type = 0)
-                            مشتری
-                        @else
+                        @if ($user->isAdmin())
                             مدیر
+                        @else
+                            مشتری
                         @endif
                     </span>
                 </div>
@@ -217,7 +223,6 @@
                     <button type="button" class="btn btn-accent" id="change-pwd" data-bs-toggle="modal" data-bs-target="#profileModal">
                         ویرایش پروفایل
                     </button>
-
                 </div>
             </div>
 

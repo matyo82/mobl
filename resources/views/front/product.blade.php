@@ -18,7 +18,7 @@
             <article class="product">
                 <div class="product-gallery">
                     <div class="main-img img-container" style="margin-left: 10px">
-                        <img src="{{ asset($product->image) }}" alt="" />
+                        <img class="border rounded shadow-sm" src="{{ asset($product->image) }}" alt="" data-aos="zoom-in" data-aos-duration="2000" />
                     </div>
                     <div class="other-img"></div>
                 </div>
@@ -29,27 +29,34 @@
                                 <a href="#">مبل</a> / <a href="#">{{ $product->productCategory->name }}</a>
                             </div>
                             <div class="access-btns">
-                                <a href="{{ route('front.product.addToFavorite', $product) }}" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart"></i></a>
+                                <a href="{{ route('front.product.addToFavorite', $product) }}" title="افزودن به علاقه‌مندی‌ها">
+                                    @if (in_array(
+                                            $product->id,
+                                            collect(auth()->user()->products()->pluck('id'))->toArray()))
+                                        <i class="bi bi-heart-fill text-danger fs-5"></i>
+                                    @else
+                                        <i class="bi bi-heart text-danger fs-5"></i>
+                                    @endif
+                                </a>
                             </div>
                         </div>
                         <h2>{{ $product->name }}</h2>
                         <hr />
-                        <div class="post-info">
+                        {{-- <div class="post-info">
                             <a href="#comments">15 نظر</a>
-                        </div>
-                        <div class="properties">
+                        </div> --}}
+                        <div class="properties" style="line-height: 1.2rem !important">
                             {{ $product->introduction }}
-
                         </div>
                     </div>
                 </div>
             </article>
 
             <!-- Sidebar for more info and access -->
-            <aside class="sidebar shadow-sm border">
-                <div class="store-info">موجودی انبار :{{ $product->marketable_number }}</div>
-                <div class="price"><span> {{ $product->price }} تومان </span></div>
-                <form action="{{ route('front.product.add-to-cart', $product) }}" method="POST" id="addToCart">
+            <aside class="sidebar shadow-sm border" style="width: fit-content !important">
+                <div class="store-info mb-2">موجودی انبار :{{ $product->marketable_number }}</div>
+                <div class="price text badge bg-success py-2 mb-2"><span> {{ $product->price }} تومان </span></div>
+                <form class="mb-2" action="{{ route('front.product.add-to-cart', $product) }}" method="POST" id="addToCart">
                     @csrf
                     <div class="add-to-cart-btn d-flex align-items-center">
                         <div class="store-info ms-auto">نوع پارچه :</div>
@@ -61,7 +68,8 @@
                     </div>
                 </form>
                 <div class="add-to-cart-btn">
-                    <button type="submit" class="btn btn-accent" onclick="document.getElementById('addToCart').submit();">
+                    <button type="submit" class="btn btn-accent text-white" onclick="document.getElementById('addToCart').submit();">
+                        <i class="bi bi-cart-plus-fill ms-1 fs-5"></i>
                         افزودن به سبد خرید
                     </button>
                 </div>
@@ -88,56 +96,63 @@
     </section>
 
     <section class="similar-products">
-    <div class="container">
-        <h3>محصولات مشابه</h3>
-        <ul>
-		@foreach($products as $product)
-            <li>
-                <a href="{{route('front.product',$product)}}">
-                    <div class="img-container">
-                        <img src="{{asset($product->image)}}" alt=""/>
-                    </div>
-                    <h4>{{$product->name}}</h4>
-                    <div class="price"><span>تومان</span> {{$product->price}}</div>
-                </a>
-            </li>
-		@endforeach
-        </ul>
-    </div>
-</section>
+        <div class="container">
+            <h3>محصولات مشابه</h3>
+            <ul>
+                @foreach ($products as $product)
+                    <li data-aos="zoom-out">
+                        <a href="{{ route('front.product', $product) }}">
+                            <div class="img-container">
+                                <img src="{{ asset($product->image) }}" alt="" />
+                            </div>
+                            <h4>{{ $product->name }}</h4>
+                            <div class="price"><span>تومان</span> {{ $product->price }}</div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
 
-    <section class="specifications">
-    <div class="container">
-        <h2>مشخصات</h2>
-        <table class="spec-table">
-
-            @foreach ($product->metas()->get() as $meta)
-                <tr>
-                    <td>{{ $meta->meta_key }}</td>
-                    <td>{{ $meta->meta_value }}</td>
+    <section class="container row gap-5 my-5">
+        <table class="table table-striped table-hover border col shadow">
+            <thead>
+                <tr class="text-center table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">ویژگی ها</th>
+                    <th scope="col">نوع</th>
                 </tr>
-            @endforeach
-
+            </thead>
+            <tbody class="text-center">
+                @foreach ($product->productMetas()->get() as $meta)
+                    <tr data-aos="fade-left" data-aos-duration="2000">
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $meta->meta_key }}</td>
+                        <td>{{ $meta->meta_value }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
-    </div>
-</section>
 
-<section class="specifications">
-    <div class="container">
-        <h2>نوع پارچه</h2>
-        <table class="spec-table">
-            @forelse ($product->productFabrics as $fabric)
-                <tr>
-                    <td>نام</td>
-                    <td>{{ $fabric->fabric_name }}</td>
+        <table class="table table-striped table-hover border col shadow">
+            <thead>
+                <tr class="text-center table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">انواع پارچه</th>
                 </tr>
-				
-				@empty
-                <h2>پارچه ای برای این محصول یافت نشد</h2>
-            @endforelse
+            </thead>
+            <tbody class="text-center">
+                @forelse ($product->productFabrics()->get() as $fabric)
+                    <tr data-aos="fade-left" data-aos-duration="1000">
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $fabric->fabric_name }}</td>
+                    </tr>
+                @empty
+                    <h2>پارچه ای برای این محصول یافت نشد</h2>
+                @endforelse
+            </tbody>
         </table>
-    </div>
-</section>
+    </section>
 
     <!-- Comments Section -->
     {{-- <section class="comments" id="comments">

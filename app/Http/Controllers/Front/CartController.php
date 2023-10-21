@@ -10,7 +10,7 @@ use App\Models\OrderItem;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Ramsey\Uuid\Type\Integer;
+use Illuminate\Support\Facades\Validator;
 use Shetabit\Multipay\Invoice;
 use Shetabit\Payment\Facade\Payment;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
@@ -90,21 +90,23 @@ class CartController extends Controller
 
             session()->forget(['transaction_id', 'amount', 'order_id']);
             return redirect()->route('front.profile')->with('payment-success', 'پرداخت شما با موفقیت انجام شد. میتوانید وضعیت سفارشتان را از صفحه پروفایل بررسی کنید.');
-
         } catch (InvalidPaymentException $exception) {
 
             session()->forget(['transaction_id', 'amount', 'order_id']);
             return redirect()->route('front.cart')->with('payment-failed', ['title' => 'پرداخت شما به دلیل زیر ناموفق بود :', 'message' => $exception->getMessage()]);
-
         }
     }
 
     public function createOrder()
     {
-        $validated = request()->validate([
+        $validated = Validator::make(request()->all() , [
             'address_id' => 'required||exists:addresses,id',
-            'prices' => 'required',
-        ]);
+            'prices' => 'required|integer|min:1000|max:1000000000',
+        ], [
+            'prices.min' => 'مبلغ از حد مجاز کمتر و یا سبد شما خالی می باشد.',
+            'prices.max' => 'مبلغ بیشتر از حد مجاز می باشد.'
+        ])->validate();
+        
         $user = auth()->user();
         $address = Address::where('id', $validated['address_id'])->first();
 
@@ -123,11 +125,11 @@ class CartController extends Controller
     public function submitOrder($order)
     {
         $user = auth()->user();
-        
+
         $order = Order::find($order);
         $order->order_status = 3;
         $order->save();
-        
+
         $cartItems = CartItem::where('user_id', $user->id)->get();
 
         //craete orderItems

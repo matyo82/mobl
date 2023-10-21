@@ -16,10 +16,19 @@ class ProductMetaFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'meta_key' => 'اندازه',
-            'meta_value' => '120*110',
-            'product_id' => 1,
+        $colors = ['مشکی', 'سفید', 'کرمی', 'سبز', 'نارنجی', 'آبی', 'قرمز'];
+        $num = [90 , 100 , 110, 120, 130, 140, 150];
+        $metas = [
+            ['اندازه' , $num[rand(0, 6)] . '*' . $num[rand(0, 6)]],
+            ['رنگ' , $colors[rand(0, 6)]],
+            ['نفرات' , rand(1, 8) . ' نفره']
         ];
+
+        $meta = $metas[rand(0, 2)];
+
+            return [
+                'meta_key' => $meta[0],
+                'meta_value' => $meta[1] 
+            ];
     }
 }

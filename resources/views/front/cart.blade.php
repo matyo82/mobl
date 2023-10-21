@@ -26,35 +26,41 @@
                 <section class="order-related">
                     <section class="orders">
                         <h2>سبد خرید</h2>
-                        <ul>
-                            <input type="text" name="prices" value="{{ $allPrices }}" hidden />
-                            @foreach ($cartItems as $cartItem)
-                                <li class="card">
-                                    <div class="img-container">
-                                        <a href="#">
-                                            <img src="{{ asset($cartItem->product->image) }}" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="text-content">
-                                        <h3>
-                                            <a href="#">{{ $cartItem->product->name }}</a>
-                                        </h3>
-                                        <div class="price">
-                                            <span>{{ $cartItem->product->price }}</span> <span>تومان</span>
-                                        </div>
-                                        
-                                        <div class="more-info">
-                                        </div>
-
-                                        <div class="d-flex justify-content-end">
-                                            <a href="{{ route('front.product.remove-from-cart', $cartItem) }}" class="btn delete-btn ms-4 shadow">
-                                                حذف
+                        @if ($cartItems->count())
+                            <ul>
+                                <input type="text" name="prices" value="{{ $allPrices }}" hidden />
+                                @foreach ($cartItems as $cartItem)
+                                    <li class="card">
+                                        <div class="img-container">
+                                            <a href="#">
+                                                <img src="{{ asset($cartItem->product->image) }}" alt="" />
                                             </a>
                                         </div>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
+                                        <div class="text-content">
+                                            <h3>
+                                                <a href="#">{{ $cartItem->product->name }}</a>
+                                            </h3>
+                                            <div class="price">
+                                                <span>{{ $cartItem->product->price }}</span> <span>تومان</span>
+                                            </div>
+
+                                            <div class="more-info">
+                                            </div>
+
+                                            <div class="d-flex justify-content-end">
+                                                <a href="{{ route('front.product.remove-from-cart', $cartItem) }}" class="btn delete-btn ms-4 shadow">
+                                                    حذف
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <div class="fs-2 text-secondary d-flex justify-content-center align-items-center" style="height: 20rem !important">
+                                در حال حاضر آیتمی برای نمایش وجود ندارد!
+                            </div>
+                        @endif
                     </section>
 
 
@@ -74,16 +80,19 @@
                                         </div>
                                     </div>
                                 </li>
-								
-								@empty
-                            <h5>برای ثبت سفارش باید ابتدا یک ادرس ایجاد کنید</h5>
-							<a class="btn btn-sm btn-warning" href="{{route('front.profile')}}">ایجاد ادرس</a>
+
+                            @empty
+                                <h5>برای ثبت سفارش باید ابتدا یک ادرس ایجاد کنید</h5>
+                                <a class="btn btn-sm btn-warning" href="{{ route('front.profile') }}">ایجاد ادرس</a>
                             @endforelse
                         </ul>
                     </section>
                 </section>
 
-                <div class="profile-info text-center">
+                <div class="profile-info text-center mt-5 mb-4">
+                    <div>
+                        <img src="{{ asset('images/products/cart.jpg') }}" alt="" class="w-100 border rounded">
+                    </div>
                     <h3>قیمت کالا ها</h3>
                     <div class="d-flex justify-content-center"><span class="total-price">{{ $allPrices }}</span> تومان</div>
                     <div class="links">

@@ -92,16 +92,16 @@
             <div class="social-icons">
                 <ul>
                     <li>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-instagram" style="color: deeppink"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-telegram text-primary"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp" style="color: limegreen"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook" style="color: darkblue"></i></a>
                     </li>
                 </ul>
             </div>
