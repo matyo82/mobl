@@ -18,11 +18,11 @@
                     <div class="widget-content widget-content-area">
 
                         @if (session()->has('success'))
-                            <div class="alert alert-success col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
+                            <div class="alert alert-success col-11 mx-auto text-center" role="alert">
                                 {{ session()->get('success') }}
                             </div>
                         @elseif(session()->has('failed'))
-                            <div class="alert alert-danger col-lg-6 col-12 mx-auto fs-5 text-center" role="alert">
+                            <div class="alert alert-danger col-11 mx-auto text-center" role="alert">
                                 {{ session()->get('failed') }}
                             </div>
                         @endif
@@ -77,11 +77,22 @@
 
                                                 <td>
                                                     <div class="form-group d-flex justify-content-center">
-                                                        <a href="{{ route('admin.user.edit', $user) }}" class="mt-4 btn btn-primary">ویرایش</a>
+                                                        @if ($user->isAdmin())
+                                                            <a href="{{ route('admin.unset-admin', $user) }}" class="mt-4 btn bg-warning p-2">
+                                                                <i class="bi bi-arrow-down"></i>
+                                                                عزل
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ route('admin.set-admin', $user) }}" class="mt-4 btn bg-success p-2">
+                                                                <i class="bi bi-arrow-up"></i>
+                                                                ترفیع
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.user.edit', $user) }}" class="mt-4 ml-2 btn bg-primary p-2">ویرایش</a>
                                                         <form class="d-inline" action="{{ route('admin.user.destroy', $user) }}" method="post">
                                                             @csrf
                                                             {{ method_field('delete') }}
-                                                            <button class="mt-4 ml-2 btn btn-danger"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                                            <button class="mt-4 ml-2 btn bg-danger p-2"type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                                                         </form>
                                                     </div>
                                                 </td>

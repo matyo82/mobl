@@ -220,9 +220,14 @@
                     </span>
                 </div>
                 <div class="links">
-                    <button type="button" class="btn btn-accent" id="change-pwd" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    <button type="button" class="btn btn-accent text-white" id="change-pwd" data-bs-toggle="modal" data-bs-target="#profileModal">
                         ویرایش پروفایل
                     </button>
+                    @if (auth()->user()->isAdmin())
+                        <a type="button" class="btn btn-accent bg-success text-white" href="{{ route('admin.index') }}">
+                            پنل مدیریت
+                        </a>
+                    @endif
                 </div>
             </div>
 

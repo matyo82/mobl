@@ -124,12 +124,18 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @php
+                    $delay = 300;
+                @endphp
                 @foreach ($product->productMetas()->get() as $meta)
-                    <tr data-aos="fade-left" data-aos-duration="2000">
+                    <tr data-aos="fade-left" data-aos-duration="1000" data-aos-delay="{{ $delay }}">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $meta->meta_key }}</td>
                         <td>{{ $meta->meta_value }}</td>
                     </tr>
+                    @php
+                        $delay += 300;
+                    @endphp
                 @endforeach
             </tbody>
         </table>
@@ -142,11 +148,17 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @php
+                    $delay = 300;
+                @endphp
                 @forelse ($product->productFabrics()->get() as $fabric)
-                    <tr data-aos="fade-left" data-aos-duration="1000">
+                    <tr data-aos="fade-left" data-aos-duration="1000" data-aos-delay="{{ $delay }}">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $fabric->fabric_name }}</td>
                     </tr>
+                    @php
+                        $delay += 300;
+                    @endphp
                 @empty
                     <h2>پارچه ای برای این محصول یافت نشد</h2>
                 @endforelse

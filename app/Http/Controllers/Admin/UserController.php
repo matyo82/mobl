@@ -114,4 +114,22 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back();
     }
+
+    public function setAdmin(User $user)
+    {
+        $user->user_type = 1;
+        $user->save();
+
+        session()->flash('success', 'کاربر مورد نظر به مدیر ترفیع یافت!');
+        return redirect()->back();
+    }
+
+    public function unsetAdmin(User $user)
+    {
+        $user->user_type = 0;
+        $user->save();
+
+        session()->flash('success', 'کاربر مورد نظر از مدیریت عزل شد!');
+        return redirect()->back();
+    }
 }

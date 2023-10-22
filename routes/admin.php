@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('admin.user.index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 
 //product
@@ -33,3 +33,8 @@ Route::prefix('order')->name('orders.')->controller(OrderController::class)->gro
 
 //user
 Route::resource('/user', UserController::class)->except('show');
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/set-admin/{user}' , 'setAdmin')->name('set-admin');
+    Route::get('/unset-admin/{user}' , 'unsetAdmin')->name('unset-admin');
+});

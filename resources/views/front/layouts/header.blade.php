@@ -11,11 +11,11 @@
                 <ul>
                         <li class="ml-2"><a href="{{ route('index') }}">خانه</a></li>
 					    |
-
+                        
                     @auth
                         <li class="ml-2"><a href="{{ route('front.profile') }}">حساب کاربری</a></li>
                         |
-                        <li class="mx-2"><a href="{{route('front.favorite')}}">علاقه مندی ها</a></li>
+                        <li class="mx-2"><a href="{{route('front.favorite')}}">علاقه مندی ها ({{ auth()->user()->products->count() }})</a></li>
                         |
                         <li class="mx-2"><a href="{{route('front.cart')}}"> سبد خرید ({{$cartItems->count()}})</a></li>
                         |

@@ -29,21 +29,22 @@
       </div>
       <div class="footer-col">
         <h3>با ما در ارتباط باشید</h3>
+        <!-- Social Icons on Hero Section -->
         <div class="social-icons">
-          <ul>
-            <li>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-telegram"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
-            </li>
-          </ul>
+            <ul>
+                <li>
+                    <a href="#"><i class="fab fa-instagram" style="color: deeppink"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-telegram text-primary"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-whatsapp" style="color: limegreen"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-facebook" style="color: darkblue"></i></a>
+                </li>
+            </ul>
         </div>
         <h4>عضویت در خبرنامه</h4>
         <form action="" method="" class="newsletter">
